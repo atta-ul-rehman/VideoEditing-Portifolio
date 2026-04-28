@@ -10,7 +10,7 @@ const homeVideos = {
   void: 'Dainosour Extinction Video.mp4',
   sony: 'Urdu female modal AI song.mp4',
   insight: 'Tiny creatures working.mp4',
-  prada: 'Hi Tech Father\'s Day.mp4',
+  prada: 'BlackBeared_Pirate_1716.mp4',
 }
 
 export function HomeSection() {
@@ -117,13 +117,13 @@ export function HomeSection() {
         <div className="portrait" aria-hidden="true">
           <video
             className="panel-video interactive-video"
-            src={mediaSrc('BlackBeared_Pirate_1716.mp4')}
+            src={mediaSrc('Hi_Tech_Father_Day1.mp4')}
             autoPlay
             loop
             muted
             playsInline
             preload="metadata"
-            onClick={() => openPreview('BlackBeared_Pirate_1716.mp4', 'Identity Core / Pirate Character')}
+            onClick={() => openPreview('Hi_Tech_Father_Day1.mp4', 'Identity Core / Pirate Character')}
           ></video>
         </div>
         <article>

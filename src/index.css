@@ -880,6 +880,7 @@ object-fit: contain !important;
   font-size: clamp(1.35rem, 2.5vw, 2rem);
   line-height: 0.92;
   margin: 0;
+  color: #eef3f8;
 }
 
 .archive-card.logo {
@@ -888,7 +889,6 @@ object-fit: contain !important;
 }
 
 .archive-card.logo h3 {
-  color: #5b6068;
   font-size: clamp(2rem, 4vw, 3.2rem);
 }
 
