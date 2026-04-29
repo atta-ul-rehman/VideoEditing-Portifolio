@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI Motion favicon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#03fca5"/>
+      <stop offset="100%" stop-color="#00b06f"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="#050607"/>
+  <path d="M14 48 L26 16 H38 L50 48 H40.5 L37.5 40 H26.5 L23.5 48 Z M29.5 32 H34.5 L32 24 Z" fill="url(#g)"/>
+  <rect x="42" y="16" width="8" height="24" rx="2" fill="#d7dade"/>
+</svg>
