@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 const mediaSrc = (fileName) => (/^https?:\/\//i.test(fileName) ? fileName : `/${encodeURIComponent(fileName)}`)
 
 const homeVideos = {
-  neural: 'This perfume ad was made completely with AI ✨😱 [F1yRHMKjJOo].mp4',
+  neural: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777433133/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr.mp4',
   nike: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/Fashion_Model_Shoot_male_fcw7uu.mp4',
   system: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376862/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk.mp4',
   void: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376863/Dainosour_Extinction_Video_d2gynn.mp4',
