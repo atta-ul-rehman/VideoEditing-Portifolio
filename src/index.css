@@ -870,6 +870,15 @@ object-fit: contain !important;
   align-content: end;
 }
 
+.archive-card.selectable {
+  cursor: pointer;
+}
+
+.archive-card.selectable:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .archive-card .meta,
 .archive-card h3 {
   position: relative;

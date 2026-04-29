@@ -1,73 +1,121 @@
 import { useState } from 'react'
 
-const mediaSrc = (fileName) => `/${encodeURIComponent(fileName)}`
+const mediaSrc = (fileName) => (/^https?:\/\//i.test(fileName) ? fileName : `/${encodeURIComponent(fileName)}`)
 
 const archiveItems = [
+  {
+    title: 'Perfume Concept Ad',
+    type: 'AI Ads',
+    style: 'screen',
+    file: 'This perfume ad was made completely with AI ✨😱 [F1yRHMKjJOo].mp4',
+  },
+  {
+    title: 'Fashion Commercial',
+    type: 'Commercial',
+    style: 'screen-small',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376861/Real_looking_Ai_fashion_commercial_d1whxa.mp4',
+  },
+  {
+    title: 'Clothes Swap UGC',
+    type: 'AI Ads',
+    style: 'text',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376869/Using_AI_Try_Clothes_Swap_zemyo3.mp4',
+  },
+  {
+    title: 'Pirate Character',
+    type: 'Character Concept',
+    style: 'logo',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/BlackBeared_Pirate_1716_pltsqv.mp4',
+  },
+  {
+    title: 'Chicken Loop',
+    type: 'AI Story',
+    style: 'swirl',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376842/2Day_old_Chicken_moving_AI_video_iaashj.mp4',
+  },
+  {
+    title: 'Cartoon Cat Reel',
+    type: 'AI Story',
+    style: 'logo',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376844/Cat_ai_cartoonic_Video_ys9hdr.mp4',
+   },
+  {
+    title: 'AI Food Babies',
+    type: 'Food Shorts',
+    style: 'swirl',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376842/Cute_AI_Food_Babies_american_ai_vidyo_Eating_Cambodian_Dishes_Oddly_Satisfying_ASMR_ai_vdeo_37g7R61oPf4_cwluaa.mp4',
+  },
+  {
+    title: 'High Tech Father Day I',
+    type: 'Commercial',
+    style: 'screen',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376877/Hi_Tech_Father_Day1_ppa6ut.mp4',
+  },
   {
     title: 'Glass Avocado ASMR',
     type: 'ASMR Food',
     style: 'swirl',
-    file: 'Cutting Glass Avocado ASMR.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376846/Cutting_Glass_Avocado_ASMR_urdvsg.mp4',
   },
   {
     title: 'Particle Grid',
     type: 'Visual FX',
     style: 'space',
-    file: 'From a Million-Year-Old Shell to my Secret Mansion! 🐢💎 [CpKWUygAoKY].mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376842/From_a_Million-Year-Old_Shell_to_my_Secret_Mansion_CpKWUygAoKY_f66uvw.mp4',
   },
   {
     title: 'Motion Protocol',
     type: 'AI Ads',
     style: 'text',
-    file: 'AI Turned This Bag Photo into a Video  👜✨ [ESqMeE47m2M].mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376839/AI_Turned_This_Bag_Photo_into_a_Video_ESqMeE47m2M_h1ywsp.mp4',
   },
   {
     title: 'Neural Canvas',
     type: 'Commercial',
     style: 'screen',
-    file: 'Hi_Tech_Father_Day2.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376859/Hi_Tech_Father_Day2_lppj68.mp4',
   },
   {
     title: 'Cartoon Puppy',
     type: 'Pets / Story',
     style: 'logo',
-    file: "Baby Puppy's Backpack Was Torn.mp4",
+    file: "https://res.cloudinary.com/dd8gmorek/video/upload/v1777376839/Baby_Puppy_s_Backpack_Was_Torn_iudqk9.mp4",
   },
   {
     title: 'AI Song Reel',
     type: 'Music',
     style: 'logo',
-    file: 'Urdu female modal AI song.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376889/Urdu_female_modal_AI_song_b4nfzj.mov',
   },
   {
     title: 'Liquid Form',
     type: 'ASMR Kitchen',
     style: 'swirl',
-    file: 'Truffled mashroom cream- 15 sec animation- 2 april 1920x3240.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376872/Truffled_mashroom_cream-_15_sec_animation-_2_april_1920x3240_om5pt0.mp4',
   },
   {
     title: 'Fitness Reset',
     type: 'Fitness',
     style: 'text',
-    file: 'Fix_LowerBack_pain.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376881/Fix_LowerBack_pain_dbbsck.mp4',
   },
   {
     title: 'Posture Coach',
     type: 'Fitness',
     style: 'logo',
-    file: 'Fix_rounded_shoulders.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376898/Fix_rounded_shoulders_i1zq27.mp4',
   },
   {
     title: 'Data Morphology',
     type: 'Mini Creatures',
     style: 'space-wide',
-    file: 'Tiny Creature making pasta.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376867/Tiny_Creature_making_pasta_tbvetu.mp4',
   },
   {
     title: 'Core UI',
     type: 'Food Shorts',
     style: 'screen-small',
-    file: 'preparándome el desayuno de la mañana 😅 [3BOvet7wWPg].mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376856/prepar%C3%A1ndome_el_desayuno_de_la_ma%C3%B1ana_3BOvet7wWPg_jhlvnb.mp4',
   },
 ]
 
@@ -114,6 +162,7 @@ const processSteps = [
 
 export function WorkSection() {
   const [previewVideo, setPreviewVideo] = useState(null)
+  const [activeCategory, setActiveCategory] = useState(null)
 
   const openPreview = (file, title) => {
     setPreviewVideo({ src: mediaSrc(file), title })
@@ -121,6 +170,20 @@ export function WorkSection() {
 
   const closePreview = () => {
     setPreviewVideo(null)
+  }
+
+  const relatedItems = activeCategory
+    ? archiveItems.filter((item) => item.type === activeCategory)
+    : []
+
+  const showRelatedByCategory = (category) => {
+    setActiveCategory(category)
+    requestAnimationFrame(() => {
+      const section = document.getElementById('related-videos')
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    })
   }
 
   return (
@@ -152,13 +215,13 @@ export function WorkSection() {
             <div className="featured-media swirl-art">
               <video
                 className="panel-video interactive-video"
-                src={mediaSrc('Fashion_Model_Shoot_male.mp4')}
+                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/Fashion_Model_Shoot_male_fcw7uu.mp4')}
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="metadata"
-                onClick={() => openPreview('Fashion_Model_Shoot_male.mp4', 'Neural Echoes / Fashion AI Ad')}
+                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/Fashion_Model_Shoot_male_fcw7uu.mp4', 'Neural Echoes / Fashion AI Ad')}
               ></video>
             </div>
             <div className="featured-copy">
@@ -201,13 +264,13 @@ export function WorkSection() {
             <div className="featured-media particle-art">
               <video
                 className="panel-video cutting-glass interactive-video"
-                src={mediaSrc('Cutting Glass Fruits Strawberry ASMR.mp4')}
+                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376848/Cutting_Glass_Fruits_Strawberry_ASMR_tufu9r.mp4')}
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="metadata"
-                onClick={() => openPreview('Cutting Glass Fruits Strawberry ASMR.mp4', 'Void Space / ASMR Food')}
+                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376848/Cutting_Glass_Fruits_Strawberry_ASMR_tufu9r.mp4', 'Void Space / ASMR Food')}
               ></video>
             </div>
           </article>
@@ -216,13 +279,13 @@ export function WorkSection() {
             <div className="featured-media screen-art">
               <video
                 className="panel-video interactive-video"
-                src={mediaSrc('This UGC Ad Was Made Without a Camera 😮📱 [trRW92vO8YA].mp4')}
+                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376862/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk.mp4')}
                 autoPlay
                 loop
                 muted
                 playsInline
                 preload="metadata"
-                onClick={() => openPreview('This UGC Ad Was Made Without a Camera 😮📱 [trRW92vO8YA].mp4', 'System 04 / UGC AI Ad')}
+                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376862/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk.mp4', 'System 04 / UGC AI Ad')}
               ></video>
             </div>
             <div className="featured-copy">
@@ -253,7 +316,19 @@ export function WorkSection() {
         </div>
         <div className="archive-grid">
           {archiveItems.map((item) => (
-            <article key={item.title} className={`archive-card ${item.style}`}>
+            <article
+              key={item.title}
+              className={`archive-card ${item.style} selectable`}
+              onClick={() => showRelatedByCategory(item.type)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault()
+                  showRelatedByCategory(item.type)
+                }
+              }}
+            >
               <video
                 className="panel-video interactive-video"
                 src={mediaSrc(item.file)}
@@ -262,7 +337,10 @@ export function WorkSection() {
                 muted
                 playsInline
                 preload="metadata"
-                onClick={() => openPreview(item.file, `${item.title} / ${item.type}`)}
+                onClick={(event) => {
+                  event.stopPropagation()
+                  openPreview(item.file, `${item.title} / ${item.type}`)
+                }}
               ></video>
               <p className="meta">{item.type}</p>
               <h3>{item.title}</h3>
@@ -273,6 +351,33 @@ export function WorkSection() {
           <button type="button">Load More Projects</button>
         </div>
       </section>
+
+      {activeCategory && (
+        <section id="related-videos" className="work-section related-section">
+          <div className="work-section-head">
+            <h2>Related Videos</h2>
+            <p className="tiny-label">{activeCategory}</p>
+          </div>
+          <div className="archive-grid">
+            {relatedItems.map((item) => (
+              <article key={`${item.title}-related`} className={`archive-card ${item.style}`}>
+                <video
+                  className="panel-video interactive-video"
+                  src={mediaSrc(item.file)}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  onClick={() => openPreview(item.file, `${item.title} / ${item.type}`)}
+                ></video>
+                <p className="meta">{item.type}</p>
+                <h3>{item.title}</h3>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="work-capabilities">
         <p className="eyebrow">// Technical Capabilities</p>

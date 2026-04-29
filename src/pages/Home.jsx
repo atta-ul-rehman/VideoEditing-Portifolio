@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const mediaSrc = (fileName) => `/${encodeURIComponent(fileName)}`
+const mediaSrc = (fileName) => (/^https?:\/\//i.test(fileName) ? fileName : `/${encodeURIComponent(fileName)}`)
 
 const homeVideos = {
   neural: 'This perfume ad was made completely with AI ✨😱 [F1yRHMKjJOo].mp4',
-  nike: 'Fashion_Model_Shoot_male.mp4',
-  system: 'This UGC Ad Was Made Without a Camera 😮📱 [trRW92vO8YA].mp4',
-  void: 'Dainosour Extinction Video.mp4',
-  sony: 'Urdu female modal AI song.mp4',
-  insight: 'Tiny creatures working.mp4',
-  prada: 'BlackBeared_Pirate_1716.mp4',
+  nike: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/Fashion_Model_Shoot_male_fcw7uu.mp4',
+  system: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376862/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk.mp4',
+  void: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376863/Dainosour_Extinction_Video_d2gynn.mp4',
+  sony: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376889/Urdu_female_modal_AI_song_b4nfzj.mov',
+  insight: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376867/Tiny_Creature_making_pasta_tbvetu.mp4',
+  prada: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/BlackBeared_Pirate_1716_pltsqv.mp4',
 }
 
 export function HomeSection() {
@@ -30,13 +30,13 @@ export function HomeSection() {
       <section className="hero home-hero">
         <video
           className="hero-bg-video interactive-video"
-          src={mediaSrc('Real_looking_Ai_fashion_commercial.mp4')}
+          src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376861/Real_looking_Ai_fashion_commercial_d1whxa.mp4')}
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          onClick={() => openPreview('Real_looking_Ai_fashion_commercial.mp4', 'Real AI Clothing Commercial')}
+          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376861/Real_looking_Ai_fashion_commercial_d1whxa.mp4', 'Real AI Clothing Commercial')}
         ></video>
         <div className="hero-aurora" aria-hidden="true"></div>
         <h1 className="hero-title">
@@ -117,13 +117,13 @@ export function HomeSection() {
         <div className="portrait" aria-hidden="true">
           <video
             className="panel-video interactive-video"
-            src={mediaSrc('Hi_Tech_Father_Day1.mp4')}
+            src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376877/Hi_Tech_Father_Day1_ppa6ut.mp4')}
             autoPlay
             loop
             muted
             playsInline
             preload="metadata"
-            onClick={() => openPreview('Hi_Tech_Father_Day1.mp4', 'Identity Core / Pirate Character')}
+            onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376877/Hi_Tech_Father_Day1_ppa6ut.mp4', 'Identity Core / Pirate Character')}
           ></video>
         </div>
         <article>
@@ -153,13 +153,13 @@ export function HomeSection() {
       <section className="home-contact-cta">
         <video
           className="panel-video interactive-video"
-          src={mediaSrc('Using AI Try Clothes Swap.mp4')}
+          src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376869/Using_AI_Try_Clothes_Swap_zemyo3.mp4')}
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          onClick={() => openPreview('Using AI Try Clothes Swap.mp4', 'GRWM / AI Fashion')}
+          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376869/Using_AI_Try_Clothes_Swap_zemyo3.mp4', 'GRWM / AI Fashion')}
         ></video>
         <p className="eyebrow">// Communication Protocol</p>
         <h2>
