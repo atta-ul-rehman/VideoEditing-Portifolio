@@ -1,25 +1,170 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const CLOUDINARY_VIDEO_RE = /^https?:\/\/res\.cloudinary\.com\/([^/]+)\/video\/upload\/(.+)$/i
+
+const buildCloudinaryVideo = (fileName, profile = 'grid') => {
+  const match = fileName.match(CLOUDINARY_VIDEO_RE)
+  if (!match) {
+    return fileName
+  }
+
+  const [, cloudName, publicPath] = match
+  const transform = profile === 'preview'
+    ? 'f_auto,vc_auto,q_auto,w_960,c_limit'
+    : 'f_auto,vc_auto,q_auto:low,w_480,c_limit'
+
+  return `https://res.cloudinary.com/${cloudName}/video/upload/${transform}/${publicPath}`
+}
+
+const buildCloudinaryPoster = (fileName) => {
+  const match = fileName.match(CLOUDINARY_VIDEO_RE)
+  if (!match) {
+    return ''
+  }
+
+  const [, cloudName, publicPath] = match
+  const posterPath = publicPath.replace(/\.[^/.]+$/, '.jpg')
+  return `https://res.cloudinary.com/${cloudName}/video/upload/f_auto,q_auto,w_640,c_fill,so_1/${posterPath}`
+}
 
 const mediaSrc = (fileName) => (/^https?:\/\//i.test(fileName) ? fileName : `/${encodeURIComponent(fileName)}`)
+
+function LazyLoopVideo({ src, poster, className, onClick }) {
+  const videoRef = useRef(null)
+  const [shouldLoad, setShouldLoad] = useState(false)
+
+  useEffect(() => {
+    const element = videoRef.current
+    if (!element) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setShouldLoad(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '240px 0px' },
+    )
+
+    observer.observe(element)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  return (
+    <video
+      ref={videoRef}
+      className={className}
+      src={shouldLoad ? src : undefined}
+      poster={poster || undefined}
+      autoPlay={shouldLoad}
+      loop
+      muted
+      playsInline
+      preload="none"
+      onClick={onClick}
+    ></video>
+  )
+}
+
+function PosterToVideo({ file, className, onClickPoster, onClickVideo }) {
+  const wrapRef = useRef(null)
+  const videoRef = useRef(null)
+  const [shouldLoad, setShouldLoad] = useState(false)
+  const [videoReady, setVideoReady] = useState(false)
+
+  useEffect(() => {
+    const element = wrapRef.current
+    if (!element) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setShouldLoad(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200px 0px' },
+    )
+
+    observer.observe(element)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || !shouldLoad) {
+      return
+    }
+
+    const handleCanPlay = () => setVideoReady(true)
+    video.addEventListener('canplay', handleCanPlay)
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay)
+    }
+  }, [shouldLoad])
+
+  const poster = buildCloudinaryPoster(file)
+  const src = file
+
+  return (
+    <div ref={wrapRef} className={`poster-to-video-wrap ${className}`}>
+      {!videoReady && (
+        <img
+          className="ptv-poster"
+          src={poster}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onClick={onClickPoster}
+        />
+      )}
+      {shouldLoad && (
+        <video
+          ref={videoRef}
+          className={`ptv-video ${videoReady ? 'ptv-visible' : ''}`}
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          onClick={onClickVideo}
+        ></video>
+      )}
+    </div>
+  )
+}
 
 const archiveItems = [
   {
     title: 'Perfume Concept Ad',
     type: 'AI Ads',
     style: 'screen',
-    file: 'This perfume ad was made completely with AI ✨😱 [F1yRHMKjJOo].mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.mp4',
   },
   {
     title: 'Fashion Commercial',
     type: 'Commercial',
     style: 'screen-small',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376861/Real_looking_Ai_fashion_commercial_d1whxa.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4',
   },
   {
     title: 'Clothes Swap UGC',
     type: 'AI Ads',
     style: 'text',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376869/Using_AI_Try_Clothes_Swap_zemyo3.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777736325/Using_AI_Try_Clothes_Swap_zemyo3_2_tmdtza.mp4',
   },
   {
     title: 'Pirate Character',
@@ -67,7 +212,7 @@ const archiveItems = [
     title: 'Motion Protocol',
     type: 'AI Ads',
     style: 'text',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376839/AI_Turned_This_Bag_Photo_into_a_Video_ESqMeE47m2M_h1ywsp.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735124/AI_Turned_This_Bag_Photo_into_a_Video_ESqMeE47m2M_h1ywsp_nkyj44.mp4',
   },
   {
     title: 'Neural Canvas',
@@ -115,7 +260,7 @@ const archiveItems = [
     title: 'Core UI',
     type: 'Food Shorts',
     style: 'screen-small',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376856/prepar%C3%A1ndome_el_desayuno_de_la_ma%C3%B1ana_3BOvet7wWPg_jhlvnb.mp4',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735753/prepar%C3%A1ndome_el_desayuno_de_la_ma%C3%B1ana_3BOvet7wWPg_jhlvnb_ufkvej.mp4',
   },
 ]
 
@@ -165,7 +310,7 @@ export function WorkSection() {
   const [activeCategory, setActiveCategory] = useState(null)
 
   const openPreview = (file, title) => {
-    setPreviewVideo({ src: mediaSrc(file), title })
+    setPreviewVideo({ src: file, title })
   }
 
   const closePreview = () => {
@@ -213,16 +358,12 @@ export function WorkSection() {
         <div className="featured-list">
           <article className="featured-case featured-landscape">
             <div className="featured-media swirl-art">
-              <video
+              <LazyLoopVideo
                 className="panel-video interactive-video"
-                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/Fashion_Model_Shoot_male_fcw7uu.mp4')}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/Fashion_Model_Shoot_male_fcw7uu.mp4', 'Neural Echoes / Fashion AI Ad')}
-              ></video>
+                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4')}
+                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4')}
+                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4', 'Neural Echoes / Fashion AI Ad')}
+              ></LazyLoopVideo>
             </div>
             <div className="featured-copy">
               <p className="meta">01 / Fashion AI Ad</p>
@@ -262,31 +403,23 @@ export function WorkSection() {
               </div>
             </div>
             <div className="featured-media particle-art">
-              <video
+              <LazyLoopVideo
                 className="panel-video cutting-glass interactive-video"
                 src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376848/Cutting_Glass_Fruits_Strawberry_ASMR_tufu9r.mp4')}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
+                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376848/Cutting_Glass_Fruits_Strawberry_ASMR_tufu9r.mp4')}
                 onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376848/Cutting_Glass_Fruits_Strawberry_ASMR_tufu9r.mp4', 'Void Space / ASMR Food')}
-              ></video>
+              ></LazyLoopVideo>
             </div>
           </article>
 
           <article className="featured-case featured-landscape">
             <div className="featured-media screen-art">
-              <video
+              <LazyLoopVideo
                 className="panel-video interactive-video"
-                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376862/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk.mp4')}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376862/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk.mp4', 'System 04 / UGC AI Ad')}
-              ></video>
+                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4')}
+                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4')}
+                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4', 'System 04 / UGC AI Ad')}
+              ></LazyLoopVideo>
             </div>
             <div className="featured-copy">
               <p className="meta">03 / UGC AI Ad</p>
@@ -329,19 +462,18 @@ export function WorkSection() {
                 }
               }}
             >
-              <video
+              <PosterToVideo
+                file={item.file}
                 className="panel-video interactive-video"
-                src={mediaSrc(item.file)}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                onClick={(event) => {
+                onClickPoster={(event) => {
                   event.stopPropagation()
                   openPreview(item.file, `${item.title} / ${item.type}`)
                 }}
-              ></video>
+                onClickVideo={(event) => {
+                  event.stopPropagation()
+                  openPreview(item.file, `${item.title} / ${item.type}`)
+                }}
+              />
               <p className="meta">{item.type}</p>
               <h3>{item.title}</h3>
             </article>
@@ -361,16 +493,12 @@ export function WorkSection() {
           <div className="archive-grid">
             {relatedItems.map((item) => (
               <article key={`${item.title}-related`} className={`archive-card ${item.style}`}>
-                <video
+                <PosterToVideo
+                  file={item.file}
                   className="panel-video interactive-video"
-                  src={mediaSrc(item.file)}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  onClick={() => openPreview(item.file, `${item.title} / ${item.type}`)}
-                ></video>
+                  onClickPoster={() => openPreview(item.file, `${item.title} / ${item.type}`)}
+                  onClickVideo={() => openPreview(item.file, `${item.title} / ${item.type}`)}
+                />
                 <p className="meta">{item.type}</p>
                 <h3>{item.title}</h3>
               </article>

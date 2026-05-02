@@ -352,6 +352,35 @@ h2 {
   transform: scale(1.08);
   /* filter: saturate(0.92) contrast(1.06) brightness(0.82); */
 }
+
+/* PosterToVideo wrapper — sits in place of the old <video> */
+.poster-to-video-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ptv-poster,
+.ptv-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+}
+
+.ptv-video {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ptv-video.ptv-visible {
+  opacity: 1;
+}
 .cutting-glass{
 object-fit: contain !important;
 }

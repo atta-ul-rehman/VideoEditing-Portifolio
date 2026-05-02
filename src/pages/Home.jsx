@@ -1,12 +1,24 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+const CLOUDINARY_VIDEO_RE = /^https?:\/\/res\.cloudinary\.com\/([^/]+)\/video\/upload\/(.+)$/i
+
+const buildCloudinaryPoster = (fileName) => {
+  const match = fileName.match(CLOUDINARY_VIDEO_RE)
+  if (!match) {
+    return ''
+  }
+  const [, cloudName, publicPath] = match
+  const posterPath = publicPath.replace(/\.[^/.]+$/, '.jpg')
+  return `https://res.cloudinary.com/${cloudName}/video/upload/f_auto,q_auto,w_640,c_fill,so_1/${posterPath}`
+}
+
 const mediaSrc = (fileName) => (/^https?:\/\//i.test(fileName) ? fileName : `/${encodeURIComponent(fileName)}`)
 
 const homeVideos = {
-  neural: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777433133/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr.mp4',
-  nike: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/Fashion_Model_Shoot_male_fcw7uu.mp4',
-  system: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376862/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk.mp4',
+  neural: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.mp4',
+  nike: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4',
+  system: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4',
   void: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376863/Dainosour_Extinction_Video_d2gynn.mp4',
   sony: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376889/Urdu_female_modal_AI_song_b4nfzj.mov',
   insight: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376867/Tiny_Creature_making_pasta_tbvetu.mp4',
@@ -30,13 +42,14 @@ export function HomeSection() {
       <section className="hero home-hero">
         <video
           className="hero-bg-video interactive-video"
-          src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376861/Real_looking_Ai_fashion_commercial_d1whxa.mp4')}
+          src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4')}
+          poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4')}
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376861/Real_looking_Ai_fashion_commercial_d1whxa.mp4', 'Real AI Clothing Commercial')}
+          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4', 'Real AI Clothing Commercial')}
         ></video>
         <div className="hero-aurora" aria-hidden="true"></div>
         <h1 className="hero-title">
@@ -71,37 +84,37 @@ export function HomeSection() {
         </div>
         <div className="works-mosaic">
           <article className="mosaic-card featured no-overlay">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.neural)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.neural, 'Neural Echoes / AI Ad')}></video>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.neural)} poster={buildCloudinaryPoster(homeVideos.neural)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.neural, 'Neural Echoes / AI Ad')}></video>
             <p className="meta">W-01 / Generative Campaign</p>
             <h3>Neural Echoes</h3>
           </article>
           <article className="mosaic-card logo-block no-overlay">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.nike)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.nike, 'Client Alpha / Fashion AI')}></video>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.nike)} poster={buildCloudinaryPoster(homeVideos.nike)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.nike, 'Client Alpha / Fashion AI')}></video>
             <p className="meta">W-02 / Client</p>
             <h3>Client Alpha</h3>
           </article>
           <article className="mosaic-card screen-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.system)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.system, 'System 04 / UGC Ad')}></video>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.system)} poster={buildCloudinaryPoster(homeVideos.system)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.system, 'System 04 / UGC Ad')}></video>
             <p className="meta">W-03 / System</p>
             <h3>System 04</h3>
           </article>
           <article className="mosaic-card space-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.void)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.void, 'Void Space / Cinematic')}></video>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.void)} poster={buildCloudinaryPoster(homeVideos.void)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.void, 'Void Space / Cinematic')}></video>
             <p className="meta">W-04 / Experimental</p>
             <h3>Void Space</h3>
           </article>
           <article className="mosaic-card logo-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.sony)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.sony, 'Client Beta / Music Video')}></video>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.sony)} poster={buildCloudinaryPoster(homeVideos.sony)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.sony, 'Client Beta / Music Video')}></video>
             <p className="meta">W-05 / Client</p>
             <h3>Client Beta</h3>
           </article>
           <article className="mosaic-card text-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.insight)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.insight, 'Tiny Creatures / Concept')}></video>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.insight)} poster={buildCloudinaryPoster(homeVideos.insight)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.insight, 'Tiny Creatures / Concept')}></video>
             <p className="meta">W-06 / Insight</p>
             <p>Creating AI-driven motion identities and high-impact digital narratives.</p>
           </article>
           <article className="mosaic-card logo-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.prada)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.prada, 'Client Gamma / Fashion Commercial')}></video>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.prada)} poster={buildCloudinaryPoster(homeVideos.prada)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.prada, 'Client Gamma / Fashion Commercial')}></video>
             <p className="meta">W-07 / Client</p>
             <h3>Client Gamma</h3>
           </article>
@@ -118,6 +131,7 @@ export function HomeSection() {
           <video
             className="panel-video interactive-video"
             src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376877/Hi_Tech_Father_Day1_ppa6ut.mp4')}
+            poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376877/Hi_Tech_Father_Day1_ppa6ut.mp4')}
             autoPlay
             loop
             muted
@@ -153,13 +167,14 @@ export function HomeSection() {
       <section className="home-contact-cta">
         <video
           className="panel-video interactive-video"
-          src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376869/Using_AI_Try_Clothes_Swap_zemyo3.mp4')}
+          src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777736325/Using_AI_Try_Clothes_Swap_zemyo3_2_tmdtza.mp4')}
+          poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777736325/Using_AI_Try_Clothes_Swap_zemyo3_2_tmdtza.mp4')}
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376869/Using_AI_Try_Clothes_Swap_zemyo3.mp4', 'GRWM / AI Fashion')}
+          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777736325/Using_AI_Try_Clothes_Swap_zemyo3_2_tmdtza.mp4', 'GRWM / AI Fashion')}
         ></video>
         <p className="eyebrow">// Communication Protocol</p>
         <h2>
