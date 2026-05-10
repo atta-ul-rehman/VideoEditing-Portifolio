@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const CLOUDINARY_VIDEO_RE = /^https?:\/\/res\.cloudinary\.com\/([^/]+)\/video\/upload\/(.+)$/i
 
@@ -340,6 +341,24 @@ export function WorkSection() {
           <span>Selected</span>
           <span>Works</span>
         </h1>
+        <div className="work-hero-stats">
+          <div className="work-hero-stat">
+            <span>200+</span>
+            <p>AI Videos Produced</p>
+          </div>
+          <div className="work-hero-stat">
+            <span>50+</span>
+            <p>Brands Served</p>
+          </div>
+          <div className="work-hero-stat">
+            <span>3×</span>
+            <p>Faster Turnaround</p>
+          </div>
+          <div className="work-hero-stat">
+            <span>100%</span>
+            <p>AI-Generated</p>
+          </div>
+        </div>
         <div className="work-filters">
           <span>Filters</span>
           <button type="button">All</button>
@@ -347,6 +366,72 @@ export function WorkSection() {
           <button type="button">WebGL</button>
           <button type="button" className="active">AI Film</button>
           <button type="button">Motion</button>
+        </div>
+      </section>
+
+      <section className="work-capabilities">
+        <p className="eyebrow">// Technical Capabilities</p>
+        <h2>What We Build</h2>
+        <div className="cards work-capability-cards">
+          {capabilities.map((item, i) => (
+            <article key={item.title} className="card capability-card">
+              <p className="cap-num">0{i + 1}</p>
+              <p className="card-tag">{item.title}</p>
+              <p>{item.copy}</p>
+              <div className="chip-row compact">
+                {item.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="work-process">
+        <p className="eyebrow">// Methodology</p>
+        <h2>How We Work</h2>
+        <ol>
+          {processSteps.map((step) => (
+            <li key={step.number}>
+              <span>{step.number}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="work-section work-intent-summary">
+        <div className="work-section-head">
+          <div>
+            <p className="eyebrow">// Start here</p>
+            <h2>Find the type of work you need in under a minute.</h2>
+          </div>
+          <p className="page-title">Clear direction for new visitors</p>
+        </div>
+        <div className="cards">
+          <article className="card intent-card">
+            <p className="card-tag">Need social videos fast</p>
+            <p>Explore AI ads, reels, and UGC examples to match your campaign style.</p>
+            <span className="intent-arrow" aria-hidden="true">→</span>
+          </article>
+          <article className="card intent-card">
+            <p className="card-tag">Need recurring output</p>
+            <p>Review category groups and workflows for ongoing monthly production support.</p>
+            <span className="intent-arrow" aria-hidden="true">→</span>
+          </article>
+          <article className="card intent-card">
+            <p className="card-tag">Need custom direction</p>
+            <p>Book a strategy call to map your footage and goals to a delivery plan.</p>
+            <div className="center-cta" style={{ marginTop: '0.7rem' }}>
+              <Link className="cta-btn" to="/contact">
+                Book a call <span aria-hidden="true">-&gt;</span>
+              </Link>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -485,7 +570,12 @@ export function WorkSection() {
       </section>
 
       {activeCategory && (
-        <section id="related-videos" className="work-section related-section">
+        <>
+          <section className="work-cta-strip">
+            <p>Like what you see in <strong>{activeCategory}</strong>? Let's build yours.</p>
+            <Link className="cta-btn" to="/contact">Start a project <span aria-hidden="true">→</span></Link>
+          </section>
+          <section id="related-videos" className="work-section related-section">
           <div className="work-section-head">
             <h2>Related Videos</h2>
             <p className="tiny-label">{activeCategory}</p>
@@ -505,41 +595,8 @@ export function WorkSection() {
             ))}
           </div>
         </section>
+        </>
       )}
-
-      <section className="work-capabilities">
-        <p className="eyebrow">// Technical Capabilities</p>
-        <h2>What I Build</h2>
-        <div className="cards work-capability-cards">
-          {capabilities.map((item) => (
-            <article key={item.title} className="card capability-card">
-              <p className="card-tag">{item.title}</p>
-              <p>{item.copy}</p>
-              <div className="chip-row compact">
-                {item.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="work-process">
-        <p className="eyebrow">// Methodology</p>
-        <h2>How I Work</h2>
-        <ol>
-          {processSteps.map((step) => (
-            <li key={step.number}>
-              <span>{step.number}</span>
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.copy}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
 
       {previewVideo && (
         <div className="video-preview-overlay" onClick={closePreview}>

@@ -1,0 +1,8 @@
+export { ServicePage } from './ServicePage'
+export { PricingPage } from './PricingPage'
+export { PortfolioPage } from './PortfolioPage'
+export { CaseStudiesPage } from './CaseStudiesPage'
+export { BlogPage } from './BlogPage'
+export { FaqPage } from './FaqPage'
+export { BlogArticleRoute } from './BlogArticleRoute'
+export { CityServicePage } from './CityServicePage'

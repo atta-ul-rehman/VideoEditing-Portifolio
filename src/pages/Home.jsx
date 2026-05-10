@@ -25,6 +25,34 @@ const homeVideos = {
   prada: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/BlackBeared_Pirate_1716_pltsqv.mp4',
 }
 
+const coreServices = [
+  {
+    title: 'Short Form Video Editing',
+    copy: 'Reels, shorts, TikToks, and vertical content made for retention and reach.',
+    path: '/services/short-form-video-editing',
+  },
+  {
+    title: 'Podcast Repurposing',
+    copy: 'One podcast turned into multiple clips, reels, and social-ready assets.',
+    path: '/services/podcast-repurposing',
+  },
+  {
+    title: 'Ecommerce Video Editing',
+    copy: 'Product ads, UGC, and paid social edits for brands that want conversions.',
+    path: '/services/ecommerce-video-editing',
+  },
+  {
+    title: 'Faceless YouTube Editing',
+    copy: 'Automation, story, and documentary-style editing for long-term channels.',
+    path: '/services/faceless-youtube-editing',
+  },
+  {
+    title: 'Reels Editing',
+    copy: 'Instagram-ready edits with stronger hooks, captions, and pacing.',
+    path: '/services/reels-editing',
+  },
+]
+
 export function HomeSection() {
   const navigate = useNavigate()
   const [previewVideo, setPreviewVideo] = useState(null)
@@ -55,29 +83,29 @@ export function HomeSection() {
         <div className="hero-content">
           <div className="hero-right">
             <h1 className="hero-title">
-              <span className="white">Your Brand.</span>
-              <span className="green">Cinematic</span>
-              <span className="green2">AI Video.</span>
+              <span className="white">AI Video Editing For</span>
+              <span className="green">Brands, Creators &</span>
+              <span className="green2">Social Teams</span>
             </h1>
           </div>
           <div className="hero-left">
             <div className="hero-cta">
-              <p className="hero-cta-label">We produce scroll-stopping AI video ads — brand films, product spots &amp; UGC content — delivered fast, at a fraction of traditional cost.</p>
+              <p className="hero-cta-label">We turn your raw footage, podcasts, and long videos into conversion-focused reels, Shorts, TikToks, and ad creatives in 48 to 72 hours.</p>
               <div className="hero-meta">
                 <p>
-                  // No Camera. No Crew.
+                  // Best Fit
                   <br />
-                  Just results that convert.
+                  Agencies, ecommerce brands, creators, coaches.
                 </p>
                 <p>
-                  // Status
+                  // Delivery
                   <br />
-                  Available for select visionary projects.
+                  Fast turnaround with revision support.
                 </p>
               </div>
               <div className="hero-cta-btns">
-                <button className="cta-btn" onClick={() => navigate('/work')}>
-                  View AI Films <span aria-hidden="true">↗</span>
+                <button className="cta-btn" onClick={() => navigate('/contact')}>
+                  Get Free Content Plan <span aria-hidden="true">↗</span>
                 </button>
                 <a
                   className="cta-btn cta-btn--wa"
@@ -86,7 +114,7 @@ export function HomeSection() {
                   rel="noopener noreferrer"
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  Contact Us
+                  WhatsApp Us
                 </a>
               </div>
             </div>
@@ -102,8 +130,28 @@ export function HomeSection() {
 
       <section className="home-works">
         <div className="section-head">
+          <h2>Core Services</h2>
+          <p>// What we rank and sell first</p>
+        </div>
+        <div className="cards">
+          {coreServices.map((service) => (
+            <article className="card" key={service.title}>
+              <p className="card-tag">{service.title}</p>
+              <p>{service.copy}</p>
+              <div className="center-cta">
+                <button type="button" onClick={() => navigate(service.path)}>
+                  View Service
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="home-works">
+        <div className="section-head">
           <h2>Selected Works</h2>
-          <p>// Archive 2024 - 2026</p>
+          <p>// Archive 2024 - 2026 // Click any video to preview</p>
         </div>
         <div className="works-mosaic">
           <article className="mosaic-card featured no-overlay">
@@ -149,6 +197,26 @@ export function HomeSection() {
         </div>
       </section>
 
+   <section className="home-works home-clarity">
+        <div className="section-head">
+          <h2>What We Do</h2>
+          <p>// Clear offer in 20 seconds</p>
+        </div>
+        <div className="cards">
+          <article className="card">
+            <p className="card-tag">Service Outcome</p>
+            <p>We convert one long recording into multiple short videos optimized for retention, reach, and sales.</p>
+          </article>
+          <article className="card">
+            <p className="card-tag">Who It Is For</p>
+            <p>Founders, agencies, ecommerce brands, and creators who need consistent content without building an in-house edit team.</p>
+          </article>
+          <article className="card">
+            <p className="card-tag">How You Buy</p>
+            <p>Start with a clip batch, scale to monthly retainer, and keep a predictable publishing system each week.</p>
+          </article>
+        </div>
+      </section>
       <section className="split about-wrap home-identity">
         <div className="portrait" aria-hidden="true">
           <video
@@ -164,24 +232,23 @@ export function HomeSection() {
           ></video>
         </div>
         <article>
-          <p className="eyebrow">// Identity Core</p>
+          <p className="eyebrow">// Why clients choose us</p>
           <h2>
-            Blending analog intuition with
-            <span> agentic AI</span>
+            Built for output,
+            <span> speed, and consistency</span>
           </h2>
           <p>
-            I architect digital experiences that refuse to be ignored. By combining raw brutalist aesthetics
-            with cutting-edge generative models, I create interfaces that feel alive, unpredictable, and deeply
-            human.
+            ClipForge combines AI workflows with human editors to produce high-volume social content without sacrificing quality.
+            You get structured delivery, fast iterations, and edits aligned to your brand voice.
           </p>
           <div className="mini-cols">
             <div>
-              <p className="tiny-label">Stack</p>
-              <p>Grok, VO3, Runway, Midjourney, Blender, Figma, After Effects, Python</p>
+              <p className="tiny-label">Speed</p>
+              <p>Most projects are delivered within 48 to 72 hours.</p>
             </div>
             <div>
-              <p className="tiny-label">Focus</p>
-              <p>Creative direction, AI integration, motion design, system architecture.</p>
+              <p className="tiny-label">Reliability</p>
+              <p>Clear process, fixed checkpoints, and quick revision loops.</p>
             </div>
           </div>
         </article>
@@ -201,15 +268,15 @@ export function HomeSection() {
         ></video>
         <p className="eyebrow">// Communication Protocol</p>
         <h2>
-          Let&apos;s Build
+          Ready To Scale
           <br />
-          The Future
+          Your Content
         </h2>
         <p className="bg-word" aria-hidden="true">
           Initiate
         </p>
         <button type="button" onClick={() => navigate('/contact')}>
-          Initialize Contact
+          Start Your Project
         </button>
       </section>
 
@@ -222,41 +289,41 @@ export function HomeSection() {
 
       <section className="mobile-home-extras">
         <div className="capability-grid">
-          <h2>What I Build</h2>
+          <h2>What We Deliver</h2>
           <div className="cards">
             <article className="card">
               <p className="card-tag">AI Videos</p>
-              <p>Cinematic brand content, launch teasers, social loops, and motion storytelling.</p>
+              <p>Short-form social videos, paid ads, and campaign edits that are ready to publish.</p>
             </article>
             <article className="card">
-              <p className="card-tag">Logos + Identity</p>
-              <p>Logo systems, wordmarks, iconography, and animated identity expressions.</p>
+              <p className="card-tag">Repurposing</p>
+              <p>One long video transformed into multiple clips for Instagram, TikTok, and YouTube.</p>
             </article>
             <article className="card">
-              <p className="card-tag">Design Systems</p>
-              <p>Conversion-focused landing pages and product visual systems for AI brands.</p>
+              <p className="card-tag">Monthly Support</p>
+              <p>Ongoing editing support for teams that publish every week.</p>
             </article>
           </div>
         </div>
 
         <div className="process">
-          <h2>How I Work</h2>
+          <h2>How We Work</h2>
         <ol>
           <li>
             <span>01</span>
-            <p>Discovery: Align brand goals with execution strategy.</p>
+            <p>Brief: Share your footage, goals, and platform priorities.</p>
           </li>
           <li>
             <span>02</span>
-            <p>Prototype: Rapid concepting with AI-assisted visual exploration.</p>
+            <p>Edit: We build hooks, pacing, captions, and platform-ready cuts.</p>
           </li>
           <li>
             <span>03</span>
-            <p>Production: Deliver polished assets optimized for web and social.</p>
+            <p>Deliver: Receive final files with quick revisions and posting-ready exports.</p>
           </li>
           <li>
             <span>04</span>
-            <p>Evolution: Extend the system as your product and audience scale.</p>
+            <p>Scale: Move from one-time batch to monthly content production.</p>
           </li>
         </ol>
         </div>
