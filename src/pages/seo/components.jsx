@@ -73,11 +73,14 @@ export function ServicePageLayout({ page, slug }) {
 		'@type': 'Service',
 		name: page.title,
 		description: page.summary,
+		url: `https://clipforge.ai/services/${slug}`,
 		areaServed: seoBrief.targetLocations,
 		serviceType: page.title,
+		keywords: page.keywords,
 		provider: {
 			'@type': 'Organization',
 			name: 'ClipForge',
+			url: 'https://clipforge.ai',
 		},
 	}
 	const faqSchema = {
@@ -461,23 +464,51 @@ export function SimpleLandingPage({ eyebrow, lines, title, intro, cards, footerT
 	)
 }
 
-export function BlogArticlePage({ article }) {
+export function BlogArticlePage({ article, slug }) {
+	const articleUrl = `https://clipforge.ai/blog/${slug}`
 	const articleSchema = {
 		'@context': 'https://schema.org',
 		'@type': 'Article',
 		headline: article.title,
 		description: article.summary,
+		mainEntityOfPage: articleUrl,
+		url: articleUrl,
+		datePublished: '2026-01-01',
+		dateModified: '2026-05-11',
 		keywords: [article.keyword, article.category],
+		articleSection: article.category,
 		author: {
 			'@type': 'Organization',
 			name: 'ClipForge',
 		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'ClipForge',
+			logo: {
+				'@type': 'ImageObject',
+				url: 'https://res.cloudinary.com/dd8gmorek/video/upload/f_auto,q_auto,w_1200,c_fill,so_1/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.jpg',
+			},
+		},
 		about: seoBrief.contentPillars,
+	}
+
+	const articleFaqSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: article.faqs.map((item) => ({
+			'@type': 'Question',
+			name: item.q,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: item.a,
+			},
+		})),
 	}
 
 	return (
 		<section className="work-page">
 			<JsonLd data={articleSchema} />
+			<JsonLd data={articleFaqSchema} />
 			<section className="hero">
 				<div className="hero-content">
 					<div className="hero-right">

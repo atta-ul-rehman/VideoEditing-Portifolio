@@ -17,9 +17,47 @@ import {
 } from './pages/SeoPages'
 import { getSeoMeta } from './pages/seo/data'
 
+const SITE_URL = 'https://clipforge.ai'
+const DEFAULT_OG_IMAGE = 'https://res.cloudinary.com/dd8gmorek/video/upload/f_auto,q_auto,w_1200,c_fill,so_1/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.jpg'
+
+const buildPublicUrl = (pathname) => {
+  const normalizedPath = pathname === '/' ? '/' : pathname
+  return `${SITE_URL}/#${normalizedPath}`
+}
+
 function App() {
   const { pathname } = useLocation()
   const seoMeta = getSeoMeta(pathname)
+  const pageUrl = buildPublicUrl(pathname)
+  const ogType = pathname.startsWith('/blog/') ? 'article' : 'website'
+
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ClipForge',
+    url: SITE_URL,
+    logo: DEFAULT_OG_IMAGE,
+    sameAs: ['https://wa.me/923163919633'],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        availableLanguage: ['en'],
+      },
+    ],
+  }
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'ClipForge',
+    url: SITE_URL,
+    inLanguage: 'en',
+    publisher: {
+      '@type': 'Organization',
+      name: 'ClipForge',
+    },
+  }
 
   useEffect(() => {
     document.title = `${seoMeta.title} | ClipForge`
@@ -34,13 +72,30 @@ function App() {
       tag.setAttribute('content', content)
     }
 
+    const upsertLink = (selector, rel, href) => {
+      let tag = document.head.querySelector(selector)
+      if (!tag) {
+        tag = document.createElement('link')
+        tag.setAttribute('rel', rel)
+        document.head.appendChild(tag)
+      }
+      tag.setAttribute('href', href)
+    }
+
     upsertMeta('meta[name="description"]', 'name', 'description', seoMeta.description)
+    upsertMeta('meta[name="robots"]', 'name', 'robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1')
     upsertMeta('meta[property="og:title"]', 'property', 'og:title', seoMeta.title)
     upsertMeta('meta[property="og:description"]', 'property', 'og:description', seoMeta.description)
+    upsertMeta('meta[property="og:type"]', 'property', 'og:type', ogType)
+    upsertMeta('meta[property="og:url"]', 'property', 'og:url', pageUrl)
+    upsertMeta('meta[property="og:image"]', 'property', 'og:image', DEFAULT_OG_IMAGE)
+    upsertMeta('meta[property="og:site_name"]', 'property', 'og:site_name', 'ClipForge')
     upsertMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image')
     upsertMeta('meta[name="twitter:title"]', 'name', 'twitter:title', seoMeta.title)
     upsertMeta('meta[name="twitter:description"]', 'name', 'twitter:description', seoMeta.description)
-  }, [seoMeta])
+    upsertMeta('meta[name="twitter:image"]', 'name', 'twitter:image', DEFAULT_OG_IMAGE)
+    upsertLink('link[rel="canonical"]', 'canonical', pageUrl)
+  }, [seoMeta, pageUrl, ogType])
 
   const pageTitle = (() => {
     const seoTitle = getPageTitle(pathname)
@@ -53,6 +108,8 @@ function App() {
 
   return (
     <div className="site-shell">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <header className="topbar">
         <p className="studio-id">CT/3042</p>
         <nav className="nav">

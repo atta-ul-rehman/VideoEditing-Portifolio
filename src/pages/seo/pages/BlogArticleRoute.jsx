@@ -21,5 +21,5 @@ export function BlogArticleRoute() {
     )
   }
 
-  return <BlogArticlePage article={article} />
+  return <BlogArticlePage article={article} slug={slug} />
 }
