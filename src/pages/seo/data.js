@@ -389,6 +389,14 @@ export function getSeoMeta(pathname) {
 			'AI-powered short form video editing, podcast repurposing, faceless YouTube workflows, and ecommerce ad creatives for local and remote teams.',
 	}
 
+	if (pathname === '/tools/reels-calculator') {
+		return {
+			title: 'How Many Reels Should I Post Per Week? Free Calculator',
+			description:
+				'Answer 4 quick questions and get your personalized Instagram Reels posting schedule — free. Find out exactly how many reels to post based on your goal, content type, and available time.',
+		}
+	}
+
 	if (pathname === '/blog') {
 		return {
 			title: 'Blog: AI Video Editing Insights',

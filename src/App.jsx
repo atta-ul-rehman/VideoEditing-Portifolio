@@ -4,6 +4,7 @@ import { HomeSection } from './pages/Home'
 import { WorkSection } from './pages/Work'
 import { AboutSection } from './pages/About'
 import { ContactSection } from './pages/Contact'
+import { ReelsCalculator } from './pages/ReelsCalculator'
 import {
   BlogPage,
   BlogArticleRoute,
@@ -125,6 +126,9 @@ function App() {
           <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>
             Contact
           </NavLink>
+          <NavLink to="/tools/reels-calculator" className={({ isActive }) => (isActive ? 'active nav-tool' : 'nav-tool')}>
+            Free Tool
+          </NavLink>
         </nav>
       </header>
 
@@ -142,6 +146,7 @@ function App() {
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/services/:slug" element={<ServicePage />} />
           <Route path="/locations/:city/:service" element={<CityServicePage />} />
+          <Route path="/tools/reels-calculator" element={<ReelsCalculator />} />
         </Routes>
       </main>
 

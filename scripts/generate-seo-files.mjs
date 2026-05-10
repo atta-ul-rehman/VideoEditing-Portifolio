@@ -6,7 +6,7 @@ const SITE_URL = process.env.SITE_URL || 'https://clipforge.ai'
 const root = process.cwd()
 const publicDir = path.join(root, 'public')
 
-const staticPaths = ['/', '/pricing', '/portfolio', '/case-studies', '/blog', '/faq', '/contact', '/about', '/work']
+const staticPaths = ['/', '/pricing', '/portfolio', '/case-studies', '/blog', '/faq', '/contact', '/about', '/work', '/tools/reels-calculator']
 const servicePaths = Object.keys(servicePages).map((slug) => `/services/${slug}`)
 const articlePaths = Object.keys(articlePages).map((slug) => `/blog/${slug}`)
 const locationPaths = cityTargets.flatMap((city) =>

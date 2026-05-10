@@ -217,6 +217,23 @@ export function HomeSection() {
           </article>
         </div>
       </section>
+
+      <section style={{ padding: '0 2rem 2.5rem' }}>
+        <div className="home-tool-promo">
+          <div className="home-tool-promo-body">
+            <span className="eyebrow">// Free Tool</span>
+            <h3>How Many Reels Should You Post Per Week?</h3>
+            <p>Answer 4 questions and get your personalized weekly reels schedule — takes 60 seconds.</p>
+          </div>
+          <button
+            className="cta-btn"
+            style={{ whiteSpace: 'nowrap', flexShrink: 0 }}
+            onClick={() => navigate('/tools/reels-calculator')}
+          >
+            Try Free Calculator →
+          </button>
+        </div>
+      </section>
       <section className="split about-wrap home-identity">
         <div className="portrait" aria-hidden="true">
           <video
