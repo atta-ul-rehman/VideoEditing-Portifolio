@@ -148,138 +148,204 @@ function PosterToVideo({ file, className, onClickPoster, onClickVideo }) {
   )
 }
 
+const renderTitleWithAI = (title) =>
+  title.split(/(AI)/g).map((part, index) => (
+    part === 'AI' ? <span key={`${title}-ai-${index}`} className="ai-word">AI</span> : part
+  ))
+
 const archiveItems = [
   {
-    title: 'Perfume Concept Ad',
+    title: 'Hafsa Khan Luxury Salon and Spa Showcase',
+    type: 'Salon and Spa Tours',
+    source: 'real',
+    style: 'screen',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778447505/Hafsa-Khan-Luxury-Salon-Spa-Cinematic-Showcase_ipvahr.mp4',
+  },
+  {
+    title: 'New Year Eve Party Highlight Reel 2025',
+    type: 'Lifestyle Reels',
+    source: 'real',
+    style: 'screen-small',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445968/New-Year-Eve-Party-Highlight-Reel-2025_snxv6h.mp4',
+  },
+  {
+    title: 'Luxury Honeymoon Destination Reel',
+    type: 'Lifestyle Reels',
+    source: 'real',
+    style: 'text',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445964/Luxury-Honeymoon-Destination-Short-Video-Reel_n5s7wf.mp4',
+  },
+  {
+    title: 'Luxury Wedding Destination Cinematic Edit',
+    type: 'Lifestyle Reels',
+    source: 'real',
+    style: 'logo',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445915/Luxury-Wedding-Destination-Video-Edit-Cinematic_dcmico.mp4',
+  },
+  {
+    title: 'Live Stage Performance Crowd Highlight Reel',
+    type: 'Events and Concerts',
+    source: 'real',
+    style: 'swirl',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445230/Live-Stage-Performance-Crowd-Highlight-Reel_waqupa.mp4',
+  },
+  {
+    title: 'Music Festival Live Act Cinematic Short Video',
+    type: 'Events and Concerts',
+    source: 'real',
+    style: 'logo',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445225/Music-Festival-Live-Act-Cinematic-Short-Video_mxnemj.mp4',
+  },
+  {
+    title: 'Animated Workplace Storytelling Edit',
+    type: 'Corporate Storytelling',
+    source: 'real',
+    style: 'swirl',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778444942/Animated-Workplace-Storytelling-Video-Edit_ropz59.mp4',
+  },
+  {
+    title: 'Creative Office Culture Animation Edit',
+    type: 'Corporate Storytelling',
+    source: 'real',
+    style: 'screen',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778444936/Creative-Office-Culture-Video-Edit-With-Animation_zaxupb.mp4',
+  },
+  {
+    title: 'Fashion Model Reel',
+    type: 'Fashion Films',
+    source: 'real',
+    style: 'swirl',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445621/Fashion_model_Reel_hzbmbl.mp4',
+  },
+  {
+    title: 'Kinza Hashmi Fashion Reel',
+    type: 'Fashion Films',
+    source: 'real',
+    style: 'space',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445599/Kinza_Hasmi_Fashion_reel_hpld8i.mp4',
+  },
+  {
+    title: 'Erica Robin Fashion Reel',
+    type: 'Fashion Films',
+    source: 'real',
+    style: 'text',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445595/Erica_s_Robin_reel_lk1ssg.mp4',
+  },
+  {
+    title: 'Fawad Khan Cinematic Fashion Reel',
+    type: 'Fashion Films',
+    source: 'real',
+    style: 'screen',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4',
+  },
+  {
+    title: 'Belco Restaurant Cinematic Reel',
+    type: 'Restaurant Showcases',
+    source: 'real',
+    style: 'logo',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778447435/Belco-Restaurant-Cinematic-Reel-AI-Edited_hnauf0.mp4',
+  },
+  {
+    title: 'Egg Spectation Restaurant Cinematic Edit',
+    type: 'Restaurant Showcases',
+    source: 'real',
+    style: 'logo',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778447428/Egg-Spectation-Restaurant-Cinematic-Video-Edit_so4mtl.mp4',
+  },
+  {
+    title: 'Branch Restaurant Interior and Kitchen Reel',
+    type: 'Restaurant Showcases',
+    source: 'real',
+    style: 'swirl',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778446533/Branch-Restaurant-Interior-Kitchen-Highlight-Reel_dirfsi.mp4',
+  },
+  {
+    title: 'Luxury Kitchen DHA Raya Interior Reel',
+    type: 'Restaurant Showcases',
+    source: 'real',
+    style: 'text',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778446502/Luxury-Kitchen-DHA-Raya-Interior-Video-Reel_npidtr.mp4',
+  },
+  {
+    title: 'Modern Home Real Estate Cinematic Reel',
+    type: 'Real Estate Reels',
+    source: 'real',
+    style: 'logo',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778446537/Modern-Home-Real-Estate-Cinematic-Reel_y7u95c.mov',
+  },
+  {
+    title: 'AI Perfume Concept Ad',
     type: 'AI Ads',
+    source: 'ai',
     style: 'screen',
     file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.mp4',
   },
   {
-    title: 'Fashion Commercial',
-    type: 'Commercial',
+    title: 'AI Smoothie Ad',
+    type: 'AI Ads',
+    source: 'ai',
+    style: 'text',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4',
+  },
+  {
+    title: 'AI Bag Motion Ad',
+    type: 'AI Ads',
+    source: 'ai',
     style: 'screen-small',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4',
-  },
-  {
-    title: 'Clothes Swap UGC',
-    type: 'AI Ads',
-    style: 'text',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777736325/Using_AI_Try_Clothes_Swap_zemyo3_2_tmdtza.mp4',
-  },
-  {
-    title: 'Pirate Character',
-    type: 'Character Concept',
-    style: 'logo',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/BlackBeared_Pirate_1716_pltsqv.mp4',
-  },
-  {
-    title: 'Chicken Loop',
-    type: 'AI Story',
-    style: 'swirl',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376842/2Day_old_Chicken_moving_AI_video_iaashj.mp4',
-  },
-  {
-    title: 'Cartoon Cat Reel',
-    type: 'AI Story',
-    style: 'logo',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376844/Cat_ai_cartoonic_Video_ys9hdr.mp4',
-   },
-  {
-    title: 'AI Food Babies',
-    type: 'Food Shorts',
-    style: 'swirl',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376842/Cute_AI_Food_Babies_american_ai_vidyo_Eating_Cambodian_Dishes_Oddly_Satisfying_ASMR_ai_vdeo_37g7R61oPf4_cwluaa.mp4',
-  },
-  {
-    title: 'High Tech Father Day I',
-    type: 'Commercial',
-    style: 'screen',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376877/Hi_Tech_Father_Day1_ppa6ut.mp4',
-  },
-  {
-    title: 'Glass Avocado ASMR',
-    type: 'ASMR Food',
-    style: 'swirl',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376846/Cutting_Glass_Avocado_ASMR_urdvsg.mp4',
-  },
-  {
-    title: 'Particle Grid',
-    type: 'Visual FX',
-    style: 'space',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376842/From_a_Million-Year-Old_Shell_to_my_Secret_Mansion_CpKWUygAoKY_f66uvw.mp4',
-  },
-  {
-    title: 'Motion Protocol',
-    type: 'AI Ads',
-    style: 'text',
     file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735124/AI_Turned_This_Bag_Photo_into_a_Video_ESqMeE47m2M_h1ywsp_nkyj44.mp4',
   },
   {
-    title: 'Neural Canvas',
-    type: 'Commercial',
-    style: 'screen',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376859/Hi_Tech_Father_Day2_lppj68.mp4',
+    title: 'AI Fashion Commercial',
+    type: 'AI Fashion Concepts',
+    source: 'ai',
+    style: 'space',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4',
   },
   {
-    title: 'Cartoon Puppy',
-    type: 'Pets / Story',
+    title: 'AI Fashion Male Shoot',
+    type: 'AI Fashion Concepts',
+    source: 'ai',
     style: 'logo',
-    file: "https://res.cloudinary.com/dd8gmorek/video/upload/v1777376839/Baby_Puppy_s_Backpack_Was_Torn_iudqk9.mp4",
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4',
   },
   {
-    title: 'AI Song Reel',
-    type: 'Music',
-    style: 'logo',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376889/Urdu_female_modal_AI_song_b4nfzj.mov',
-  },
-  {
-    title: 'Liquid Form',
-    type: 'ASMR Kitchen',
-    style: 'swirl',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376872/Truffled_mashroom_cream-_15_sec_animation-_2_april_1920x3240_om5pt0.mp4',
-  },
-  {
-    title: 'Fitness Reset',
-    type: 'Fitness',
-    style: 'text',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376881/Fix_LowerBack_pain_dbbsck.mp4',
-  },
-  {
-    title: 'Posture Coach',
-    type: 'Fitness',
-    style: 'logo',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376898/Fix_rounded_shoulders_i1zq27.mp4',
-  },
-  {
-    title: 'Data Morphology',
-    type: 'Mini Creatures',
+    title: 'AI Tiny Creature Story',
+    type: 'AI Story Concepts',
+    source: 'ai',
     style: 'space-wide',
     file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376867/Tiny_Creature_making_pasta_tbvetu.mp4',
   },
   {
-    title: 'Core UI',
-    type: 'Food Shorts',
-    style: 'screen-small',
-    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735753/prepar%C3%A1ndome_el_desayuno_de_la_ma%C3%B1ana_3BOvet7wWPg_jhlvnb_ufkvej.mp4',
+    title: 'AI Dinosaur Story',
+    type: 'AI Story Concepts',
+    source: 'ai',
+    style: 'swirl',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376863/Dainosour_Extinction_Video_d2gynn.mp4',
+  },
+  {
+    title: 'AI Song Reel',
+    type: 'AI Music Concepts',
+    source: 'ai',
+    style: 'logo',
+    file: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376889/Urdu_female_modal_AI_song_b4nfzj.mov',
   },
 ]
 
 const capabilities = [
   {
-    title: '3D Experiences',
-    copy: 'Immersive visuals, environments, real-time rendering, shaders, and physics-led simulations.',
-    tags: ['Three.js', 'Blender', 'Motion'],
+    title: 'Short Form Reels Editing',
+    copy: 'High-retention vertical edits for Instagram Reels, TikTok, and YouTube Shorts with cinematic pacing.',
+    tags: ['Reels', 'TikTok', 'YouTube Shorts'],
   },
   {
-    title: 'AI Integration',
-    copy: 'Machine learning motion, generative systems, neural networks, and agentic workflows.',
-    tags: ['TensorFlow', 'Python', 'Media'],
+    title: 'Cinematic Niche Production',
+    copy: 'Specialized edits for fashion films, restaurant showcases, real estate reels, and live event highlights.',
+    tags: ['Fashion', 'Restaurants', 'Real Estate'],
   },
   {
-    title: 'Motion Systems',
-    copy: 'Kinetic typography, audio-reactive animation, procedural motion, and interactive storytelling.',
-    tags: ['GSAP', 'Framer', 'After Effects'],
+    title: 'AI-Assisted Post Production',
+    copy: 'Human-led editing with AI support for faster delivery, cleaner cuts, and brand-consistent final output.',
+    tags: ['Color', 'Captions', 'Fast Turnaround'],
   },
 ]
 
@@ -309,6 +375,7 @@ const processSteps = [
 export function WorkSection() {
   const [previewVideo, setPreviewVideo] = useState(null)
   const [activeCategory, setActiveCategory] = useState(null)
+  const [activeSource, setActiveSource] = useState('all')
 
   const openPreview = (file, title) => {
     setPreviewVideo({ src: file, title })
@@ -319,8 +386,10 @@ export function WorkSection() {
   }
 
   const relatedItems = activeCategory
-    ? archiveItems.filter((item) => item.type === activeCategory)
+    ? archiveItems.filter((item) => item.type === activeCategory && (activeSource === 'all' || item.source === activeSource))
     : []
+
+  const filteredArchiveItems = archiveItems.filter((item) => activeSource === 'all' || item.source === activeSource)
 
   const showRelatedByCategory = (category) => {
     setActiveCategory(category)
@@ -341,10 +410,11 @@ export function WorkSection() {
           <span>Selected</span>
           <span>Works</span>
         </h1>
+        <p className="work-hero-featured">Featured</p>
         <div className="work-hero-stats">
           <div className="work-hero-stat">
             <span>200+</span>
-            <p>AI Videos Produced</p>
+            <p>Reels Edited</p>
           </div>
           <div className="work-hero-stat">
             <span>50+</span>
@@ -355,36 +425,110 @@ export function WorkSection() {
             <p>Faster Turnaround</p>
           </div>
           <div className="work-hero-stat">
-            <span>100%</span>
-            <p>AI-Generated</p>
+            <span>Hybrid</span>
+            <p>Real Footage + AI Workflow</p>
           </div>
         </div>
         <div className="work-filters">
-          <span>Filters</span>
-          <button type="button">All</button>
-          <button type="button">Generative</button>
-          <button type="button">WebGL</button>
-          <button type="button" className="active">AI Film</button>
-          <button type="button">Motion</button>
+          <span>Source</span>
+          <button type="button" className={activeSource === 'all' ? 'active' : ''} onClick={() => setActiveSource('all')}>
+            All Work
+          </button>
+          <button type="button" className={activeSource === 'real' ? 'active' : ''} onClick={() => setActiveSource('real')}>
+            Real Client Reels
+          </button>
+          <button type="button" className={activeSource === 'ai' ? 'active' : ''} onClick={() => setActiveSource('ai')}>
+            AI Video Edits
+          </button>
         </div>
       </section>
 
-      <section className="work-capabilities">
-        <p className="eyebrow">// Technical Capabilities</p>
-        <h2>What We Build</h2>
-        <div className="cards work-capability-cards">
-          {capabilities.map((item, i) => (
-            <article key={item.title} className="card capability-card">
-              <p className="cap-num">0{i + 1}</p>
-              <p className="card-tag">{item.title}</p>
-              <p>{item.copy}</p>
-              <div className="chip-row compact">
-                {item.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
+      <section className="work-section featured-section">
+        <div className="work-section-head">
+          <h2>Featured</h2>
+          <p className="tiny-label">06 Projects</p>
+        </div>
+        <div className="featured-list">
+          <article className="featured-case featured-landscape">
+            <div className="featured-media swirl-art">
+              <LazyLoopVideo
+                className="panel-video interactive-video"
+                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4')}
+                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4')}
+                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4', 'Fawad Khan / Fashion Film')}
+              ></LazyLoopVideo>
+            </div>
+            <div className="featured-copy">
+              <h3>{renderTitleWithAI('Fawad Khan Cinematic Reel')}</h3>
+              <p>
+                Premium fashion reel edited for Fawad Khan to match high-end campaign pacing and social-first storytelling.
+              </p>
+              <div className="chip-row">
+                <span>Real Client</span>
+                <span>Fashion Film</span>
+                <span>Celebrity Reel</span>
+                <span>Reels</span>
               </div>
-            </article>
-          ))}
+              <div className="featured-foot">
+                <p className="tiny-label">Client: Fawad Khan</p>
+                <button type="button">↗</button>
+              </div>
+            </div>
+          </article>
+
+          <article className="featured-case featured-reverse">
+            <div className="featured-copy">
+              <h3>{renderTitleWithAI('AI Smoothie Ad')}</h3>
+              <p>
+                AI-generated UGC-style ad used to test hooks and concepts quickly before full production campaigns.
+              </p>
+              <div className="chip-row">
+                <span>AI Edit</span>
+                <span>UGC</span>
+                <span>Concept Testing</span>
+                <span>Short Form</span>
+              </div>
+              <div className="featured-foot">
+                <p className="tiny-label">Use case: Creative Prototype</p>
+                <button type="button">↗</button>
+              </div>
+            </div>
+            <div className="featured-media particle-art">
+              <LazyLoopVideo
+                className="panel-video cutting-glass interactive-video"
+                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4')}
+                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4')}
+                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4', 'System 04 / AI UGC Concept')}
+              ></LazyLoopVideo>
+            </div>
+          </article>
+
+          <article className="featured-case featured-landscape">
+            <div className="featured-media screen-art">
+              <LazyLoopVideo
+                className="panel-video interactive-video"
+                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1778446502/Luxury-Kitchen-DHA-Raya-Interior-Video-Reel_npidtr.mp4')}
+                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1778446502/Luxury-Kitchen-DHA-Raya-Interior-Video-Reel_npidtr.mp4')}
+                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1778446502/Luxury-Kitchen-DHA-Raya-Interior-Video-Reel_npidtr.mp4', 'DHA Raya / Interior Reel')}
+              ></LazyLoopVideo>
+            </div>
+            <div className="featured-copy">
+              <h3>{renderTitleWithAI('DHA Raya Luxury Kitchen Reel')}</h3>
+              <p>
+                Cinematic interior edit for DHA Raya featuring luxury kitchen visuals designed for real estate and hospitality marketing.
+              </p>
+              <div className="chip-row">
+                <span>Real Client</span>
+                <span>Interior</span>
+                <span>Real Estate</span>
+                <span>Restaurant</span>
+              </div>
+              <div className="featured-foot">
+                <p className="tiny-label">Client: DHA Raya</p>
+                <button type="button">↗</button>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -415,7 +559,7 @@ export function WorkSection() {
         <div className="cards">
           <article className="card intent-card">
             <p className="card-tag">Need social videos fast</p>
-            <p>Explore AI ads, reels, and UGC examples to match your campaign style.</p>
+            <p>Explore cinematic reels, fashion films, restaurant edits, and event highlights to match your style.</p>
             <span className="intent-arrow" aria-hidden="true">→</span>
           </article>
           <article className="card intent-card">
@@ -435,105 +579,13 @@ export function WorkSection() {
         </div>
       </section>
 
-      <section className="work-section featured-section">
-        <div className="work-section-head">
-          <h2>Featured</h2>
-          <p className="tiny-label">06 Projects</p>
-        </div>
-        <div className="featured-list">
-          <article className="featured-case featured-landscape">
-            <div className="featured-media swirl-art">
-              <LazyLoopVideo
-                className="panel-video interactive-video"
-                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4')}
-                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4')}
-                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4', 'Neural Echoes / Fashion AI Ad')}
-              ></LazyLoopVideo>
-            </div>
-            <div className="featured-copy">
-              <p className="meta">01 / Fashion AI Ad</p>
-              <h3>Neural Echoes</h3>
-              <p>
-                Studio-grade AI fashion ad built for apparel brand launches, social reels, and retail campaigns.
-              </p>
-              <div className="chip-row">
-                <span>AI Ads</span>
-                <span>Fashion</span>
-                <span>Reels</span>
-                <span>Commercial</span>
-              </div>
-              <div className="featured-foot">
-                <p className="tiny-label">Client: Alpha</p>
-                <button type="button">↗</button>
-              </div>
-            </div>
-          </article>
-
-          <article className="featured-case featured-reverse">
-            <div className="featured-copy">
-              <p className="meta">02 / ASMR Food</p>
-              <h3>Void Space</h3>
-              <p>
-                Hyper-satisfying AI food visuals with glass-cut textures and close-up cutting loops.
-              </p>
-              <div className="chip-row">
-                <span>ASMR</span>
-                <span>Food</span>
-                <span>Shorts</span>
-                <span>Loop</span>
-              </div>
-              <div className="featured-foot">
-                <p className="tiny-label">Client: Food Shorts</p>
-                <button type="button">↗</button>
-              </div>
-            </div>
-            <div className="featured-media particle-art">
-              <LazyLoopVideo
-                className="panel-video cutting-glass interactive-video"
-                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376848/Cutting_Glass_Fruits_Strawberry_ASMR_tufu9r.mp4')}
-                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376848/Cutting_Glass_Fruits_Strawberry_ASMR_tufu9r.mp4')}
-                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777376848/Cutting_Glass_Fruits_Strawberry_ASMR_tufu9r.mp4', 'Void Space / ASMR Food')}
-              ></LazyLoopVideo>
-            </div>
-          </article>
-
-          <article className="featured-case featured-landscape">
-            <div className="featured-media screen-art">
-              <LazyLoopVideo
-                className="panel-video interactive-video"
-                src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4')}
-                poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4')}
-                onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4', 'System 04 / UGC AI Ad')}
-              ></LazyLoopVideo>
-            </div>
-            <div className="featured-copy">
-              <p className="meta">03 / UGC AI Ad</p>
-              <h3>System 04</h3>
-              <p>
-                Product-first UGC ad concept generated without camera footage for fast brand content testing.
-              </p>
-              <div className="chip-row">
-                <span>AI Ads</span>
-                <span>UGC</span>
-                <span>Mobile</span>
-                <span>Brand</span>
-              </div>
-              <div className="featured-foot">
-                <p className="tiny-label">Client: Commerce</p>
-                <button type="button">↗</button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
       <section className="work-section archive-section">
         <div className="work-section-head">
           <h2>Archive</h2>
           <p className="tiny-label">2024 - 2026</p>
         </div>
         <div className="archive-grid">
-          {archiveItems.map((item) => (
+          {filteredArchiveItems.map((item) => (
             <article
               key={item.title}
               className={`archive-card ${item.style} selectable`}
@@ -559,13 +611,31 @@ export function WorkSection() {
                   openPreview(item.file, `${item.title} / ${item.type}`)
                 }}
               />
-              <p className="meta">{item.type}</p>
-              <h3>{item.title}</h3>
+              <h3>{renderTitleWithAI(item.title)}</h3>
             </article>
           ))}
         </div>
         <div className="center-cta">
           <button type="button">Load More Projects</button>
+        </div>
+      </section>
+
+      <section className="work-capabilities">
+        <p className="eyebrow">// Technical Capabilities</p>
+        <h2>What We Build</h2>
+        <div className="cards work-capability-cards">
+          {capabilities.map((item, i) => (
+            <article key={item.title} className="card capability-card">
+              <p className="cap-num">0{i + 1}</p>
+              <p className="card-tag">{item.title}</p>
+              <p>{item.copy}</p>
+              <div className="chip-row compact">
+                {item.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -589,8 +659,7 @@ export function WorkSection() {
                   onClickPoster={() => openPreview(item.file, `${item.title} / ${item.type}`)}
                   onClickVideo={() => openPreview(item.file, `${item.title} / ${item.type}`)}
                 />
-                <p className="meta">{item.type}</p>
-                <h3>{item.title}</h3>
+                <h3>{renderTitleWithAI(item.title)}</h3>
               </article>
             ))}
           </div>

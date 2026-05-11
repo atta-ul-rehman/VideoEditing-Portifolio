@@ -152,6 +152,7 @@ function App() {
 
       <footer className="footer-row">
         <p>// 2026 / All rights reserved</p>
+        <p>Client reels show editing credit only. Source footage, trademarks, and likenesses remain with their respective owners.</p>
         <p className="page-title">{pageTitle}</p>
       </footer>
 

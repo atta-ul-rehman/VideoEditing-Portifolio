@@ -151,6 +151,9 @@ main {
 .home-hero {
   position: relative;
   background: #050607;
+  min-height: clamp(680px, 82vh, 860px);
+  display: grid;
+  align-items: center;
 }
 
 .home-hero::before {
@@ -185,18 +188,43 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 2.6rem;
   width: 100%;
   box-sizing: border-box;
+  min-height: clamp(560px, 70vh, 720px);
 }
 
 .hero-left {
-  flex: 0 1 420px;
+  flex: 0 1 430px;
 }
 
 .hero-right {
-  flex: 0 1 680px;
+  flex: 1 1 620px;
   text-align: left;
+}
+
+.hero-kicker {
+  margin: 0 0 1rem;
+  color: rgba(236, 244, 248, 0.88);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hero-title-frame {
+  position: relative;
+  display: inline-block;
+  width: min(760px, 100%);
+  padding: 0.8rem 1.15rem 0.7rem 0;
+}
+
+.hero-title-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(3, 252, 165, 0) 0%, rgba(3, 252, 165, 0.9) 18%, rgba(3, 252, 165, 0.25) 100%);
 }
 
 
@@ -215,28 +243,73 @@ main {
   position: relative;
   z-index: 2;
   margin-top: 0.2rem;
+  padding-left: 1.2rem;
 }
 
 .hero-title span {
   display: block;
-  line-height: 0.9;
+  line-height: 0.94;
+  text-wrap: balance;
 }
 
 .hero-title .white {
-  color: #d7dade;
-  font-size: clamp(2.8rem, 5vw, 4rem);
+  color: #edf3f7;
+  font-size: clamp(2.8rem, 5.2vw, 4.55rem);
+  letter-spacing: 0.01em;
 }
 
 .hero-title .green {
   color: var(--accent);
-  font-size: clamp(2.6rem, 5vw, 4rem);
-  margin-left: clamp(1rem, 3vw, 2rem);
+  font-size: clamp(2.45rem, 4.7vw, 4rem);
+  margin-left: clamp(0.15rem, 1vw, 0.75rem);
 }
 .hero-title .green2 {
-  text-decoration: underline;
-  color: var(--accent);
-  font-size: clamp(2.6rem, 5vw, 4rem);
-  margin-left: clamp(1rem, 5vw, 3rem);
+  color: #dfe6eb;
+  font-size: clamp(2.25rem, 4.35vw, 3.75rem);
+  margin-left: clamp(0.65rem, 2.3vw, 1.8rem);
+  text-decoration: none;
+  position: relative;
+}
+
+.hero-title .green2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.12em;
+  width: 100%;
+  height: 0.18em;
+  background: linear-gradient(90deg, rgba(3, 252, 165, 0.9), rgba(3, 252, 165, 0.22));
+  z-index: -1;
+}
+
+.hero-title-note {
+  margin: 1.15rem 0 0;
+  max-width: 46ch;
+  color: #c8d0d8;
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  padding-left: 1.2rem;
+}
+
+.hero-proof-strip {
+  margin-top: 1.15rem;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.hero-proof-strip span {
+  padding: 0.42rem 0.62rem;
+  border: 1px solid rgba(233, 241, 246, 0.16);
+  background: rgba(7, 11, 14, 0.54);
+  color: #e7eef4;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
 }
 .hero-meta {
   position: relative;
@@ -440,6 +513,17 @@ h2 {
   background: #0d0f11;
 }
 
+.mosaic-card::after,
+.archive-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(5, 7, 8, 0) 0%, rgba(5, 7, 8, 0.78) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
 .panel-video {
   position: absolute;
   inset: 0;
@@ -495,8 +579,43 @@ object-fit: contain !important;
 
 .mosaic-card h3 {
   margin: 0;
-  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
-  line-height: 0.92;
+  font-size: clamp(0.96rem, 1.5vw, 1.12rem);
+  line-height: 0.98;
+  position: absolute;
+  left: 0.7rem;
+  bottom: 0.7rem;
+  max-width: calc(100% - 1.4rem);
+  padding: 0.55rem 0.65rem;
+  color: #15342d;
+  background: rgba(221, 255, 244, 0.95);
+  font-weight: 900;
+  text-align: left;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+
+.ai-word {
+  display: inline-block;
+  padding: 0.08rem 0.28rem;
+  margin-right: 0.18rem;
+  border-radius: 0.18rem;
+  background: #15342d;
+  color: #ecfff8;
+  line-height: 1;
+}
+
+.mosaic-card .meta,
+.archive-card .meta {
+  position: absolute;
+  left: 0.7rem;
+  bottom: 3.2rem;
+  max-width: calc(100% - 1.4rem);
+  padding: 0.45rem 0.65rem;
+  background: rgba(255, 255, 255, 0.96);
+  color: #1a3c36;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
 }
 
 .featured {
@@ -516,8 +635,8 @@ object-fit: contain !important;
 }
 
 .logo-block h3 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  color: white;
+  font-size: clamp(0.96rem, 1.5vw, 1.12rem);
+  color: #15342d;
 }
 
 .screen-block {
@@ -861,6 +980,15 @@ object-fit: contain !important;
   color: var(--accent);
 }
 
+.work-hero-featured {
+  margin: 0.2rem 0 0;
+  color: #dce4eb;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
 .work-filters {
   display: flex;
   gap: 0.4rem;
@@ -1084,6 +1212,7 @@ object-fit: contain !important;
   padding: 0.7rem;
   display: grid;
   align-content: end;
+  position: relative;
 }
 
 .archive-card.selectable {
@@ -1102,19 +1231,28 @@ object-fit: contain !important;
 }
 
 .archive-card h3 {
-  font-size: clamp(1.35rem, 2.5vw, 2rem);
-  line-height: 0.92;
+  font-size: clamp(0.98rem, 1.45vw, 1.12rem);
+  line-height: 0.98;
   margin: 0;
-  color: #eef3f8;
+  color: #15342d;
+  position: absolute;
+  left: 0.7rem;
+  bottom: 0.7rem;
+  max-width: calc(100% - 1.4rem);
+  padding: 0.55rem 0.65rem;
+  background: rgba(221, 255, 244, 0.95);
+  font-weight: 900;
+  text-align: left;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
 }
 
 .archive-card.logo {
-  align-content: center;
-  text-align: center;
+  align-content: end;
+  text-align: left;
 }
 
 .archive-card.logo h3 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(0.98rem, 1.45vw, 1.12rem);
 }
 
 .archive-card.swirl {
@@ -1292,7 +1430,7 @@ object-fit: contain !important;
 .floating-whatsapp {
   position: fixed;
   bottom: 2rem;
-  left: 2rem;
+  right: 2rem;
   z-index: 40;
   width: 56px;
   height: 56px;
@@ -1321,7 +1459,7 @@ object-fit: contain !important;
 @media (max-width: 640px) {
   .floating-whatsapp {
     bottom: 1.5rem;
-    left: 1.5rem;
+    right: 1.5rem;
     width: 50px;
     height: 50px;
   }
@@ -1438,7 +1576,7 @@ object-fit: contain !important;
 }
 
 .archive-card.selectable:hover h3 {
-  color: var(--accent);
+  color: #15342d;
 }
 
 /* ── Process Step — hover accent line ── */

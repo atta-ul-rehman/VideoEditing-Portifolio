@@ -17,11 +17,17 @@ function buildCloudinaryPoster(fileName) {
 }
 
 const serviceVideoBySlug = {
-	'short-form-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4',
+	'short-form-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445968/New-Year-Eve-Party-Highlight-Reel-2025_snxv6h.mp4',
 	'podcast-repurposing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376889/Urdu_female_modal_AI_song_b4nfzj.mov',
 	'faceless-youtube-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376863/Dainosour_Extinction_Video_d2gynn.mp4',
 	'ecommerce-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4',
-	'reels-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4',
+	'reels-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4',
+	'real-estate-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778446537/Modern-Home-Real-Estate-Cinematic-Reel_y7u95c.mov',
+	'product-ad-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4',
+	'tiktok-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445964/Luxury-Honeymoon-Destination-Short-Video-Reel_n5s7wf.mp4',
+	'youtube-shorts-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445915/Luxury-Wedding-Destination-Video-Edit-Cinematic_dcmico.mp4',
+	'ugc-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4',
+	'restaurant-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778447435/Belco-Restaurant-Cinematic-Reel-AI-Edited_hnauf0.mp4',
 	'ai-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.mp4',
 }
 
@@ -30,7 +36,13 @@ const serviceVideo2BySlug = {
 	'podcast-repurposing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376881/Fix_LowerBack_pain_dbbsck.mp4',
 	'faceless-youtube-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376867/Tiny_Creature_making_pasta_tbvetu.mp4',
 	'ecommerce-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.mp4',
-	'reels-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4',
+	'reels-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445595/Erica_s_Robin_reel_lk1ssg.mp4',
+	'real-estate-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778446502/Luxury-Kitchen-DHA-Raya-Interior-Video-Reel_npidtr.mp4',
+	'product-ad-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.mp4',
+	'tiktok-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445230/Live-Stage-Performance-Crowd-Highlight-Reel_waqupa.mp4',
+	'youtube-shorts-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445225/Music-Festival-Live-Act-Cinematic-Short-Video_mxnemj.mp4',
+	'ugc-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735124/AI_Turned_This_Bag_Photo_into_a_Video_ESqMeE47m2M_h1ywsp_nkyj44.mp4',
+	'restaurant-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778447428/Egg-Spectation-Restaurant-Cinematic-Video-Edit_so4mtl.mp4',
 	'ai-video-editing': 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4',
 }
 

@@ -16,13 +16,13 @@ const buildCloudinaryPoster = (fileName) => {
 const mediaSrc = (fileName) => (/^https?:\/\//i.test(fileName) ? fileName : `/${encodeURIComponent(fileName)}`)
 
 const homeVideos = {
-  neural: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.mp4',
-  nike: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735808/Fashion_Model_Shoot_male_fcw7uu_2_fodefe.mp4',
+  neural: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4',
+  nike: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778445595/Erica_s_Robin_reel_lk1ssg.mp4',
   system: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735894/This_UGC_Ad_Was_Made_Without_a_Camera_trRW92vO8YA_actynk_bdfmgj.mp4',
-  void: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376863/Dainosour_Extinction_Video_d2gynn.mp4',
+  void: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778446502/Luxury-Kitchen-DHA-Raya-Interior-Video-Reel_npidtr.mp4',
   sony: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376889/Urdu_female_modal_AI_song_b4nfzj.mov',
-  insight: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376867/Tiny_Creature_making_pasta_tbvetu.mp4',
-  prada: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777376849/BlackBeared_Pirate_1716_pltsqv.mp4',
+  insight: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1778447435/Belco-Restaurant-Cinematic-Reel-AI-Edited_hnauf0.mp4',
+  prada: 'https://res.cloudinary.com/dd8gmorek/video/upload/v1777735901/This_perfume_ad_was_made_completely_with_AI_F1yRHMKjJOo_bsklpr_upgyl5.mp4',
 }
 
 const coreServices = [
@@ -53,6 +53,11 @@ const coreServices = [
   },
 ]
 
+const renderTitleWithAI = (title) =>
+  title.split(/(AI)/g).map((part, index) => (
+    part === 'AI' ? <span key={`${title}-ai-${index}`} className="ai-word">AI</span> : part
+  ))
+
 export function HomeSection() {
   const navigate = useNavigate()
   const [previewVideo, setPreviewVideo] = useState(null)
@@ -70,23 +75,32 @@ export function HomeSection() {
       <section className="hero home-hero">
         <video
           className="hero-bg-video interactive-video"
-          src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4')}
-          poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4')}
+          src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4')}
+          poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4')}
           autoPlay
           loop
           muted
           playsInline
           preload="metadata"
-          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1777735897/Real_looking_Ai_fashion_commercial_d1whxa_anlmvg.mp4', 'Real AI Clothing Commercial')}
+          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4', 'Fawad Khan / High-Converting Fashion Reel')}
         ></video>
         <div className="hero-aurora" aria-hidden="true"></div>
         <div className="hero-content">
           <div className="hero-right">
-            <h1 className="hero-title">
-              <span className="white">AI Video Editing For</span>
-              <span className="green">Brands, Creators &</span>
-              <span className="green2">Social Teams</span>
-            </h1>
+            <p className="hero-kicker">Premium Hybrid Editing Studio</p>
+            <div className="hero-title-frame">
+              <h1 className="hero-title">
+                <span className="white">AI Video Editing</span>
+                <span className="green">for Brands and Creators</span>
+                <span className="green2">Built for Social Teams</span>
+              </h1>
+            </div>
+            <p className="hero-title-note">Real client reels, AI concept edits, and premium short-form delivery built to convert attention into inquiries.</p>
+            <div className="hero-proof-strip" aria-label="studio proof points">
+              <span>Real Client Reels</span>
+              <span>AI Concept Edits</span>
+              <span>48 to 72 Hour Delivery</span>
+            </div>
           </div>
           <div className="hero-left">
             <div className="hero-cta">
@@ -151,43 +165,36 @@ export function HomeSection() {
       <section className="home-works">
         <div className="section-head">
           <h2>Selected Works</h2>
-          <p>// Archive 2024 - 2026 // Click any video to preview</p>
+          <p>// Real Client Reels + AI Concept Edits // Click any video to preview</p>
         </div>
         <div className="works-mosaic">
           <article className="mosaic-card featured no-overlay">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.neural)} poster={buildCloudinaryPoster(homeVideos.neural)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.neural, 'Neural Echoes / AI Ad')}></video>
-            <p className="meta">W-01 / Generative Campaign</p>
-            <h3>Neural Echoes</h3>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.neural)} poster={buildCloudinaryPoster(homeVideos.neural)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.neural, 'Fawad Khan / Real Client Reel')}></video>
+            <h3>{renderTitleWithAI('Fawad Khan Reel')}</h3>
           </article>
           <article className="mosaic-card logo-block no-overlay">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.nike)} poster={buildCloudinaryPoster(homeVideos.nike)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.nike, 'Client Alpha / Fashion AI')}></video>
-            <p className="meta">W-02 / Client</p>
-            <h3>Client Alpha</h3>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.nike)} poster={buildCloudinaryPoster(homeVideos.nike)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.nike, 'Erica Robin / Real Client Reel')}></video>
+            <h3>{renderTitleWithAI('Erica Robin Reel')}</h3>
           </article>
           <article className="mosaic-card screen-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.system)} poster={buildCloudinaryPoster(homeVideos.system)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.system, 'System 04 / UGC Ad')}></video>
-            <p className="meta">W-03 / System</p>
-            <h3>System 04</h3>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.system)} poster={buildCloudinaryPoster(homeVideos.system)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.system, 'AI Smoothie Ad / AI UGC Concept')}></video>
+            <h3>{renderTitleWithAI('AI Smoothie Ad')}</h3>
           </article>
           <article className="mosaic-card space-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.void)} poster={buildCloudinaryPoster(homeVideos.void)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.void, 'Void Space / Cinematic')}></video>
-            <p className="meta">W-04 / Experimental</p>
-            <h3>Void Space</h3>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.void)} poster={buildCloudinaryPoster(homeVideos.void)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.void, 'DHA Raya / Real Client Reel')}></video>
+            <h3>{renderTitleWithAI('DHA Raya Interior Reel')}</h3>
           </article>
           <article className="mosaic-card logo-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.sony)} poster={buildCloudinaryPoster(homeVideos.sony)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.sony, 'Client Beta / Music Video')}></video>
-            <p className="meta">W-05 / Client</p>
-            <h3>Client Beta</h3>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.sony)} poster={buildCloudinaryPoster(homeVideos.sony)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.sony, 'AI Song Reel / Concept')}></video>
+            <h3>{renderTitleWithAI('AI Song Reel')}</h3>
           </article>
           <article className="mosaic-card text-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.insight)} poster={buildCloudinaryPoster(homeVideos.insight)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.insight, 'Tiny Creatures / Concept')}></video>
-            <p className="meta">W-06 / Insight</p>
-            <p>Creating AI-driven motion identities and high-impact digital narratives.</p>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.insight)} poster={buildCloudinaryPoster(homeVideos.insight)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.insight, 'Belco Restaurant / Real Client Reel')}></video>
+            <h3>{renderTitleWithAI('Belco Restaurant Reel')}</h3>
           </article>
           <article className="mosaic-card logo-block">
-            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.prada)} poster={buildCloudinaryPoster(homeVideos.prada)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.prada, 'Client Gamma / Fashion Commercial')}></video>
-            <p className="meta">W-07 / Client</p>
-            <h3>Client Gamma</h3>
+            <video className="panel-video interactive-video" src={mediaSrc(homeVideos.prada)} poster={buildCloudinaryPoster(homeVideos.prada)} autoPlay loop muted playsInline preload="metadata" onClick={() => openPreview(homeVideos.prada, 'Perfume Concept / AI Ad')}></video>
+            <h3>{renderTitleWithAI('AI Perfume Concept Ad')}</h3>
           </article>
         </div>
         <div className="center-cta">

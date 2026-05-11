@@ -29,6 +29,10 @@ export function AboutSection() {
           We combine creative direction, generative tooling, and production systems to deliver short-form videos
           that are easier to publish, easier to scale, and aligned with brand standards.
         </p>
+        <p>
+          Portfolio items featuring real brands, venues, or public figures represent editing work only unless stated otherwise.
+          Original footage, trademarks, likenesses, and source materials remain the property of their respective owners or licensors.
+        </p>
         <div className="mini-cols">
           <div>
             <p className="tiny-label">Tools</p>
@@ -41,6 +45,20 @@ export function AboutSection() {
           <div>
             <p className="tiny-label">Turnaround</p>
             <p>Most projects are delivered in 48 to 72 hours with revision support.</p>
+          </div>
+        </div>
+        <div className="mini-cols" style={{ marginTop: '1rem' }}>
+          <div>
+            <p className="tiny-label">Real client reels</p>
+            <p>We edited these projects for portfolio display. We do not claim to have produced or filmed the original source footage unless explicitly noted.</p>
+          </div>
+          <div>
+            <p className="tiny-label">AI portfolio work</p>
+            <p>Our AI sample videos are created by us using tools such as Grok and Voe3 as original AI-generated concepts, not by reusing third-party stock footage unless stated otherwise.</p>
+          </div>
+          <div>
+            <p className="tiny-label">Usage and clearance</p>
+            <p>Final commercial use can still depend on music, trademarks, likeness permissions, platform terms, and local law, so clients should confirm clearance for their intended market.</p>
           </div>
         </div>
         <div className="center-cta" style={{ textAlign: 'left' }}>
