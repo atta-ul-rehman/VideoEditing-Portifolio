@@ -1,5 +1,5 @@
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { HomeSection } from './pages/Home'
 import { WorkSection } from './pages/Work'
 import { AboutSection } from './pages/About'
@@ -107,26 +107,37 @@ function App() {
     return 'AI Motion Studio'
   })()
 
+  const [menuOpen, setMenuOpen] = useState(false)
+  const closeMenu = () => setMenuOpen(false)
+
   return (
     <div className="site-shell">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
-      <header className="topbar">
+      <header className={`topbar${menuOpen ? ' menu-open' : ''}`}>
         <p className="studio-id">CT/3042</p>
+        <button
+          className="hamburger"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(o => !o)}
+        >
+          <span /><span /><span />
+        </button>
         <nav className="nav">
-          <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')} onClick={closeMenu}>
             Home
           </NavLink>
-          <NavLink to="/work" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/work" className={({ isActive }) => (isActive ? 'active' : '')} onClick={closeMenu}>
             Work
           </NavLink>
-          <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : '')} onClick={closeMenu}>
             About
           </NavLink>
-          <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')}>
+          <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active' : '')} onClick={closeMenu}>
             Contact
           </NavLink>
-          <NavLink to="/tools/reels-calculator" className={({ isActive }) => (isActive ? 'active nav-tool' : 'nav-tool')}>
+          <NavLink to="/tools/reels-calculator" className={({ isActive }) => (isActive ? 'active nav-tool' : 'nav-tool')} onClick={closeMenu}>
             Free Tool
           </NavLink>
         </nav>

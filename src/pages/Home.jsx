@@ -74,7 +74,7 @@ export function HomeSection() {
     <>
       <section className="hero home-hero">
         <video
-          className="hero-bg-video interactive-video"
+          className="hero-bg-video"
           src={mediaSrc('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4')}
           poster={buildCloudinaryPoster('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4')}
           autoPlay
@@ -82,55 +82,70 @@ export function HomeSection() {
           muted
           playsInline
           preload="metadata"
-          onClick={() => openPreview('https://res.cloudinary.com/dd8gmorek/video/upload/v1778445573/Fawad_Khan_03_jmcc6h.mp4', 'Fawad Khan / High-Converting Fashion Reel')}
         ></video>
         <div className="hero-aurora" aria-hidden="true"></div>
-        <div className="hero-content">
-          <div className="hero-right">
-            <p className="hero-kicker">Premium Hybrid Editing Studio</p>
+        <div className="hero-content hero-content--split">
+          <div className="hero-main hero-main--left">
+            <p className="hero-kicker">Scale Organically</p>
             <div className="hero-title-frame">
               <h1 className="hero-title">
-                <span className="white">AI Video Editing</span>
-                <span className="green">for Brands and Creators</span>
-                <span className="green2">Built for Social Teams</span>
+                <span className="white">Crafting content that</span>
+                <span className="green hero-money-pill">actually makes money</span>
+                <span className="green2">for brands and creators</span>
               </h1>
             </div>
-            <p className="hero-title-note">Real client reels, AI concept edits, and premium short-form delivery built to convert attention into inquiries.</p>
-            <div className="hero-proof-strip" aria-label="studio proof points">
-              <span>Real Client Reels</span>
-              <span>AI Concept Edits</span>
-              <span>48 to 72 Hour Delivery</span>
+            <p className="hero-title-note">We grow personal brands by 2-5x and build inbound and outbound lead generation systems for founders and online service providers in 90-120 days.</p>
+            <div className="hero-main-cta" aria-label="primary actions">
+              <button className="cta-btn" onClick={() => navigate('/contact')}>
+                Get Started
+              </button>
+              <button className="cta-btn cta-btn--ghost" onClick={() => navigate('/work')}>
+                How We Do It <span aria-hidden="true">→</span>
+              </button>
             </div>
+            <div className="hero-proof-strip" aria-label="studio proof points">
+              <span>200+ Reels Delivered</span>
+              <span>Real Client Work + AI Concepts</span>
+              <span>48 to 72 Hour Turnaround</span>
+            </div>
+            <details className="hero-offer-details">
+              <summary>Show Offer Details</summary>
+              <div className="hero-cta">
+                <p className="hero-cta-label">Stop losing reach with inconsistent content. Get a reliable editing partner that delivers conversion-focused Reels, Shorts, TikToks, and ad creatives every week.</p>
+                <div className="hero-meta">
+                  <p>
+                    // Best Fit
+                    <br />
+                    Agencies, ecommerce brands, creators, coaches.
+                  </p>
+                  <p>
+                    // Delivery
+                    <br />
+                    Fast turnaround with revision support.
+                  </p>
+                </div>
+                <div className="hero-cta-btns">
+                  <button className="cta-btn" onClick={() => navigate('/contact')}>
+                    Get Your Free 7-Day Content Plan <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+            </details>
           </div>
-          <div className="hero-left">
-            <div className="hero-cta">
-              <p className="hero-cta-label">We turn your raw footage, podcasts, and long videos into conversion-focused reels, Shorts, TikToks, and ad creatives in 48 to 72 hours.</p>
-              <div className="hero-meta">
-                <p>
-                  // Best Fit
-                  <br />
-                  Agencies, ecommerce brands, creators, coaches.
-                </p>
-                <p>
-                  // Delivery
-                  <br />
-                  Fast turnaround with revision support.
-                </p>
-              </div>
-              <div className="hero-cta-btns">
-                <button className="cta-btn" onClick={() => navigate('/contact')}>
-                  Get Free Content Plan <span aria-hidden="true">↗</span>
-                </button>
-                <a
-                  className="cta-btn cta-btn--wa"
-                  href="https://wa.me/923163919633"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                  WhatsApp Us
-                </a>
-              </div>
+
+          <div className="hero-side-video" aria-label="featured hero reel">
+            <div className="hero-feature-video hero-feature-video--portrait">
+              <video
+                className="interactive-video"
+                src={mediaSrc(homeVideos.neural)}
+                poster={buildCloudinaryPoster(homeVideos.neural)}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                onClick={() => openPreview(homeVideos.neural, 'Featured Hero Reel')}
+              ></video>
             </div>
           </div>
         </div>
@@ -144,8 +159,8 @@ export function HomeSection() {
 
       <section className="home-works">
         <div className="section-head">
-          <h2>Core Services</h2>
-          <p>// What we rank and sell first</p>
+          <h2>Services Built to Grow Revenue</h2>
+          <p>// Choose the workflow that fits your growth stage</p>
         </div>
         <div className="cards">
           {coreServices.map((service) => (
@@ -154,7 +169,7 @@ export function HomeSection() {
               <p>{service.copy}</p>
               <div className="center-cta">
                 <button type="button" onClick={() => navigate(service.path)}>
-                  View Service
+                  See Service Details
                 </button>
               </div>
             </article>
@@ -164,8 +179,8 @@ export function HomeSection() {
 
       <section className="home-works">
         <div className="section-head">
-          <h2>Selected Works</h2>
-          <p>// Real Client Reels + AI Concept Edits // Click any video to preview</p>
+          <h2>Proof in Performance</h2>
+          <p>// Real client edits and AI concepts built for retention and response</p>
         </div>
         <div className="works-mosaic">
           <article className="mosaic-card featured no-overlay">
@@ -199,28 +214,28 @@ export function HomeSection() {
         </div>
         <div className="center-cta">
           <button type="button" onClick={() => navigate('/work')}>
-            View Full Archive
+            See Full Project Library
           </button>
         </div>
       </section>
 
    <section className="home-works home-clarity">
         <div className="section-head">
-          <h2>What We Do</h2>
-          <p>// Clear offer in 20 seconds</p>
+          <h2>Your Content Engine, Simplified</h2>
+          <p>// Understand the offer in 20 seconds</p>
         </div>
         <div className="cards">
           <article className="card">
             <p className="card-tag">Service Outcome</p>
-            <p>We convert one long recording into multiple short videos optimized for retention, reach, and sales.</p>
+            <p>Turn one long recording into a consistent stream of short videos designed for reach, retention, and conversion.</p>
           </article>
           <article className="card">
             <p className="card-tag">Who It Is For</p>
-            <p>Founders, agencies, ecommerce brands, and creators who need consistent content without building an in-house edit team.</p>
+            <p>Founders, agencies, ecommerce brands, and creators who need high-volume output without hiring an in-house edit team.</p>
           </article>
           <article className="card">
             <p className="card-tag">How You Buy</p>
-            <p>Start with a clip batch, scale to monthly retainer, and keep a predictable publishing system each week.</p>
+            <p>Start with a clip batch, then scale into a monthly retainer with a predictable weekly publishing pipeline.</p>
           </article>
         </div>
       </section>
@@ -229,15 +244,15 @@ export function HomeSection() {
         <div className="home-tool-promo">
           <div className="home-tool-promo-body">
             <span className="eyebrow">// Free Tool</span>
-            <h3>How Many Reels Should You Post Per Week?</h3>
-            <p>Answer 4 questions and get your personalized weekly reels schedule — takes 60 seconds.</p>
+            <h3>How Many Reels Should You Post to Grow Faster?</h3>
+            <p>Answer 4 quick questions and get a personalized posting plan in 60 seconds.</p>
           </div>
           <button
             className="cta-btn"
             style={{ whiteSpace: 'nowrap', flexShrink: 0 }}
             onClick={() => navigate('/tools/reels-calculator')}
           >
-            Try Free Calculator →
+            Get My Free Reels Plan →
           </button>
         </div>
       </section>
@@ -258,21 +273,21 @@ export function HomeSection() {
         <article>
           <p className="eyebrow">// Why clients choose us</p>
           <h2>
-            Built for output,
-            <span> speed, and consistency</span>
+            Built for scale,
+            <span> speed, and brand consistency</span>
           </h2>
           <p>
-            ClipForge combines AI workflows with human editors to produce high-volume social content without sacrificing quality.
-            You get structured delivery, fast iterations, and edits aligned to your brand voice.
+            ClipForge blends AI acceleration with human editorial judgment, so you get faster delivery without sacrificing quality.
+            Every edit follows your brand voice, performance goals, and publishing cadence.
           </p>
           <div className="mini-cols">
             <div>
               <p className="tiny-label">Speed</p>
-              <p>Most projects are delivered within 48 to 72 hours.</p>
+              <p>Most projects are delivered in 48 to 72 hours.</p>
             </div>
             <div>
               <p className="tiny-label">Reliability</p>
-              <p>Clear process, fixed checkpoints, and quick revision loops.</p>
+              <p>Clear workflow, fixed checkpoints, and fast revision loops.</p>
             </div>
           </div>
         </article>
@@ -292,15 +307,15 @@ export function HomeSection() {
         ></video>
         <p className="eyebrow">// Communication Protocol</p>
         <h2>
-          Ready To Scale
+          Ready to Scale
           <br />
-          Your Content
+          Content Without Burnout?
         </h2>
         <p className="bg-word" aria-hidden="true">
           Initiate
         </p>
         <button type="button" onClick={() => navigate('/contact')}>
-          Start Your Project
+          Book Your Strategy Call
         </button>
       </section>
 
@@ -313,29 +328,29 @@ export function HomeSection() {
 
       <section className="mobile-home-extras">
         <div className="capability-grid">
-          <h2>What We Deliver</h2>
+          <h2>What You Get</h2>
           <div className="cards">
             <article className="card">
               <p className="card-tag">AI Videos</p>
-              <p>Short-form social videos, paid ads, and campaign edits that are ready to publish.</p>
+              <p>Short-form social videos and ad creatives ready to publish and test.</p>
             </article>
             <article className="card">
               <p className="card-tag">Repurposing</p>
-              <p>One long video transformed into multiple clips for Instagram, TikTok, and YouTube.</p>
+              <p>One long video transformed into multiple platform-ready clips.</p>
             </article>
             <article className="card">
               <p className="card-tag">Monthly Support</p>
-              <p>Ongoing editing support for teams that publish every week.</p>
+              <p>Ongoing editing support for teams that need reliable weekly output.</p>
             </article>
           </div>
         </div>
 
         <div className="process">
-          <h2>How We Work</h2>
+          <h2>How We Deliver</h2>
         <ol>
           <li>
             <span>01</span>
-            <p>Brief: Share your footage, goals, and platform priorities.</p>
+            <p>Brief: Share footage, goals, and platform priorities.</p>
           </li>
           <li>
             <span>02</span>
@@ -343,11 +358,11 @@ export function HomeSection() {
           </li>
           <li>
             <span>03</span>
-            <p>Deliver: Receive final files with quick revisions and posting-ready exports.</p>
+            <p>Deliver: Receive posting-ready files with fast revisions.</p>
           </li>
           <li>
             <span>04</span>
-            <p>Scale: Move from one-time batch to monthly content production.</p>
+            <p>Scale: Move from one-off batch to a monthly content engine.</p>
           </li>
         </ol>
         </div>

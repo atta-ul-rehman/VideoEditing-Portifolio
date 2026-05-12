@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import './work-page.css'
 
 const CLOUDINARY_VIDEO_RE = /^https?:\/\/res\.cloudinary\.com\/([^/]+)\/video\/upload\/(.+)$/i
 
@@ -402,7 +403,7 @@ export function WorkSection() {
   }
 
   return (
-    <div className="work-page">
+    <div className="work-page wp-page">
       <section className="work-hero">
         <div className="work-hero-bg" aria-hidden="true"></div>
         <p className="eyebrow">// Portfolio Archive</p>
@@ -445,7 +446,7 @@ export function WorkSection() {
 
       <section className="work-section featured-section">
         <div className="work-section-head">
-          <h2>Featured</h2>
+          <h2>Featured Results</h2>
           <p className="tiny-label">06 Projects</p>
         </div>
         <div className="featured-list">
@@ -461,7 +462,7 @@ export function WorkSection() {
             <div className="featured-copy">
               <h3>{renderTitleWithAI('Fawad Khan Cinematic Reel')}</h3>
               <p>
-                Premium fashion reel edited for Fawad Khan to match high-end campaign pacing and social-first storytelling.
+                Premium fashion reel edited for Fawad Khan with campaign-grade pacing and social-first storytelling.
               </p>
               <div className="chip-row">
                 <span>Real Client</span>
@@ -480,7 +481,7 @@ export function WorkSection() {
             <div className="featured-copy">
               <h3>{renderTitleWithAI('AI Smoothie Ad')}</h3>
               <p>
-                AI-generated UGC-style ad used to test hooks and concepts quickly before full production campaigns.
+                AI-generated UGC-style concept built to validate hooks quickly before scaling full campaigns.
               </p>
               <div className="chip-row">
                 <span>AI Edit</span>
@@ -515,7 +516,7 @@ export function WorkSection() {
             <div className="featured-copy">
               <h3>{renderTitleWithAI('DHA Raya Luxury Kitchen Reel')}</h3>
               <p>
-                Cinematic interior edit for DHA Raya featuring luxury kitchen visuals designed for real estate and hospitality marketing.
+                Cinematic interior reel for DHA Raya designed to elevate perceived brand value across real estate and hospitality channels.
               </p>
               <div className="chip-row">
                 <span>Real Client</span>
@@ -534,7 +535,7 @@ export function WorkSection() {
 
       <section className="work-process">
         <p className="eyebrow">// Methodology</p>
-        <h2>How We Work</h2>
+        <h2>How We Deliver Results</h2>
         <ol>
           {processSteps.map((step) => (
             <li key={step.number}>
@@ -552,27 +553,27 @@ export function WorkSection() {
         <div className="work-section-head">
           <div>
             <p className="eyebrow">// Start here</p>
-            <h2>Find the type of work you need in under a minute.</h2>
+            <h2>Find your best-fit video workflow in under a minute.</h2>
           </div>
           <p className="page-title">Clear direction for new visitors</p>
         </div>
         <div className="cards">
           <article className="card intent-card">
             <p className="card-tag">Need social videos fast</p>
-            <p>Explore cinematic reels, fashion films, restaurant edits, and event highlights to match your style.</p>
+            <p>Explore cinematic reels, fashion films, restaurant edits, and event highlights matched to your brand style.</p>
             <span className="intent-arrow" aria-hidden="true">→</span>
           </article>
           <article className="card intent-card">
             <p className="card-tag">Need recurring output</p>
-            <p>Review category groups and workflows for ongoing monthly production support.</p>
+            <p>Review category workflows built for consistent monthly production at scale.</p>
             <span className="intent-arrow" aria-hidden="true">→</span>
           </article>
           <article className="card intent-card">
             <p className="card-tag">Need custom direction</p>
-            <p>Book a strategy call to map your footage and goals to a delivery plan.</p>
+            <p>Book a strategy call and map your footage, goals, and growth targets to a clear delivery plan.</p>
             <div className="center-cta" style={{ marginTop: '0.7rem' }}>
               <Link className="cta-btn" to="/contact">
-                Book a call <span aria-hidden="true">-&gt;</span>
+                Book a strategy call <span aria-hidden="true">-&gt;</span>
               </Link>
             </div>
           </article>
@@ -581,7 +582,7 @@ export function WorkSection() {
 
       <section className="work-section archive-section">
         <div className="work-section-head">
-          <h2>Archive</h2>
+          <h2>Project Library</h2>
           <p className="tiny-label">2024 - 2026</p>
         </div>
         <div className="archive-grid">
@@ -616,13 +617,13 @@ export function WorkSection() {
           ))}
         </div>
         <div className="center-cta">
-          <button type="button">Load More Projects</button>
+          <button type="button">Show More Projects</button>
         </div>
       </section>
 
       <section className="work-capabilities">
         <p className="eyebrow">// Technical Capabilities</p>
-        <h2>What We Build</h2>
+        <h2>What We Execute</h2>
         <div className="cards work-capability-cards">
           {capabilities.map((item, i) => (
             <article key={item.title} className="card capability-card">
@@ -642,12 +643,12 @@ export function WorkSection() {
       {activeCategory && (
         <>
           <section className="work-cta-strip">
-            <p>Like what you see in <strong>{activeCategory}</strong>? Let's build yours.</p>
-            <Link className="cta-btn" to="/contact">Start a project <span aria-hidden="true">→</span></Link>
+            <p>Like what you see in <strong>{activeCategory}</strong>? Let us build your version next.</p>
+            <Link className="cta-btn" to="/contact">Start my project <span aria-hidden="true">→</span></Link>
           </section>
           <section id="related-videos" className="work-section related-section">
           <div className="work-section-head">
-            <h2>Related Videos</h2>
+            <h2>More in This Category</h2>
             <p className="tiny-label">{activeCategory}</p>
           </div>
           <div className="archive-grid">

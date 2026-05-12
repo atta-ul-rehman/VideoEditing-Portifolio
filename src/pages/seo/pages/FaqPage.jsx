@@ -23,7 +23,7 @@ export function FaqPage() {
     <section className="contact-wrap">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <p className="eyebrow">// FAQ Hub</p>
-      <h2>Questions buyers and search engines ask most.</h2>
+      <h2>Questions buyers ask before they commit.</h2>
       {faqGroups.map((group) => (
         <div key={group.title} className="mini-cols">
           <div>
@@ -66,7 +66,7 @@ export function FaqPage() {
 
       <div className="center-cta">
         <Link className="cta-btn" to="/contact">
-          Ask a question <span aria-hidden="true">-&gt;</span>
+          Ask your question now <span aria-hidden="true">-&gt;</span>
         </Link>
       </div>
     </section>

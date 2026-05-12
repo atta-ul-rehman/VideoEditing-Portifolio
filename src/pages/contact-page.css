@@ -1,0 +1,142 @@
+/* ============================================================
+   Contact Page - Premium
+   Scoped classes: .cp-*
+   ============================================================ */
+
+.cp-page {
+  width: min(1120px, calc(100vw - 2.2rem));
+  margin: 1rem auto 0;
+  padding: 2rem;
+  border: 1px solid rgba(25, 230, 183, 0.15);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(214, 168, 70, 0.11), transparent 36%),
+    radial-gradient(circle at 10% 86%, rgba(25, 230, 183, 0.08), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.014), #080d13 58%);
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.32);
+}
+
+.cp-eyebrow {
+  display: inline-flex;
+  margin: 0;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 168, 70, 0.34);
+  background: rgba(214, 168, 70, 0.18);
+  color: #f1d48f;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cp-title {
+  margin: 0.8rem 0 0;
+  font-size: clamp(2.3rem, 5.5vw, 4.8rem);
+  line-height: 0.92;
+  color: var(--text);
+}
+
+.cp-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.cp-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(8, 13, 20, 0.82);
+  padding: 0.8rem;
+}
+
+.cp-label {
+  margin: 0;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.cp-copy {
+  margin: 0.42rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.58;
+  color: rgba(205, 218, 232, 0.8);
+}
+
+.cp-form {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  max-width: 760px;
+  border: 1px solid rgba(25, 230, 183, 0.2);
+  border-radius: 12px;
+  background: rgba(7, 12, 18, 0.82);
+  padding: 1rem;
+}
+
+.cp-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cp-form input,
+.cp-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+  background: rgba(19, 28, 38, 0.9);
+  color: var(--text);
+  padding: 0.72rem 0.78rem;
+  font: inherit;
+  line-height: 1.4;
+}
+
+.cp-form input:focus,
+.cp-form textarea:focus {
+  outline: none;
+  border-color: rgba(25, 230, 183, 0.5);
+  box-shadow: 0 0 0 3px rgba(25, 230, 183, 0.12);
+}
+
+.cp-form button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1ef1c2, #10cfa7);
+  color: #07100d;
+  padding: 0.76rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.cp-form button:hover {
+  background: linear-gradient(135deg, #28ffd0, #13ddb4);
+  box-shadow: 0 8px 22px rgba(25, 230, 183, 0.28);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 760px) {
+  .cp-page {
+    width: calc(100vw - 1.2rem);
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .cp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cp-form button {
+    width: 100%;
+  }
+}

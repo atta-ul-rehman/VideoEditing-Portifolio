@@ -2,25 +2,25 @@ import { Link } from 'react-router-dom'
 import { articlePages, blogClusters } from '../data'
 import { seoBrief } from '../data'
 import { splitLines } from '../components'
+import '../blog-pages.css'
 
 export function BlogPage() {
   return (
-    <section className="work-page">
-      <section className="hero">
-        <div className="hero-content">
-          <div className="hero-right">
-            <p className="eyebrow">// Blog</p>
-            <h1 className="hero-title">{splitLines(['Authority', 'Content'])}</h1>
-            <p className="hero-copy">
-              This blog helps buyers understand services, compare options, and choose the right video editing workflow faster.
+    <section className="bp-page">
+      <section className="bp-hero">
+        <div className="bp-hero__inner">
+          <div>
+            <p className="bp-eyebrow">// Blog</p>
+            <h1 className="bp-title">{splitLines(['Authority', 'Content'])}</h1>
+            <p className="bp-copy">
+              This blog helps buyers evaluate options quickly and choose the right video editing workflow with confidence.
             </p>
           </div>
-          <div className="hero-left">
-            <div className="hero-cta">
-              <p className="hero-cta-label">
-                Every article is written to answer real buying questions around short-form editing, repurposing, ads, and YouTube workflows.
+          <div className="bp-panel">
+              <p className="bp-panel__label">
+                Every guide is built around real buying questions on short-form editing, repurposing, ads, and YouTube workflows.
               </p>
-              <div className="hero-meta">
+              <div className="bp-meta">
                 <p>
                   // Topics
                   <br />
@@ -29,58 +29,61 @@ export function BlogPage() {
                 <p>
                   // Outcome
                   <br />
-                  Educate visitors and move them to inquiry.
+                  Build trust and move qualified visitors to inquiry.
                 </p>
               </div>
-              <div className="hero-cta-btns">
-                <Link className="cta-btn" to="/contact">
-                  Request Content Strategy <span aria-hidden="true">-&gt;</span>
+              <div className="bp-ctas">
+                <Link className="bp-btn bp-btn--primary" to="/contact">
+                  Request a Content Strategy Call <span aria-hidden="true">-&gt;</span>
                 </Link>
-                <Link className="cta-btn cta-btn--wa" to="/pricing">
-                  See Packages <span aria-hidden="true">-&gt;</span>
+                <Link className="bp-btn bp-btn--ghost" to="/pricing">
+                  View Pricing Options <span aria-hidden="true">-&gt;</span>
                 </Link>
               </div>
-            </div>
           </div>
         </div>
       </section>
 
-      <section className="work-section">
-        <div className="work-section-head">
+      <div className="bp-divider" />
+
+      <section className="bp-section">
+        <div className="bp-head">
           <div>
-            <p className="eyebrow">// Reader clarity</p>
-            <h2>What this blog is meant to help you decide.</h2>
+            <p className="bp-eyebrow">// Reader clarity</p>
+            <h2>What this blog helps you decide faster.</h2>
           </div>
         </div>
-        <div className="cards">
-          <article className="card">
-            <p className="card-tag">Service fit</p>
+        <div className="bp-grid">
+          <article className="bp-card">
+            <p className="bp-tag">Service fit</p>
             <p>Understand which editing service best matches your business model and content type.</p>
           </article>
-          <article className="card">
-            <p className="card-tag">Execution model</p>
+          <article className="bp-card">
+            <p className="bp-tag">Execution model</p>
             <p>Learn how production, revisions, and delivery cycles work before you commit.</p>
           </article>
-          <article className="card">
-            <p className="card-tag">Expected outcomes</p>
-            <p>See how consistent publishing and better hooks improve social content performance.</p>
+          <article className="bp-card">
+            <p className="bp-tag">Expected outcomes</p>
+            <p>Learn how consistent publishing and stronger hooks improve content performance.</p>
           </article>
         </div>
       </section>
 
-      <section className="work-section">
-        <div className="work-section-head">
+      <div className="bp-divider" />
+
+      <section className="bp-section">
+        <div className="bp-head">
           <div>
-            <p className="eyebrow">// Content clusters</p>
-            <h2>Blog themes that build topical authority.</h2>
+            <p className="bp-eyebrow">// Content clusters</p>
+            <h2>Content pillars that build trust and authority.</h2>
           </div>
         </div>
-        <div className="cards">
+        <div className="bp-grid">
           {blogClusters.map((cluster) => (
-            <article className="card" key={cluster.title}>
-              <p className="card-tag">{cluster.title}</p>
+            <article className="bp-card" key={cluster.title}>
+              <p className="bp-tag">{cluster.title}</p>
               <p>{cluster.copy}</p>
-              <div className="chip-row compact">
+              <div className="bp-chip-row">
                 {cluster.topics.map((topic) => (
                   <span key={topic}>{topic}</span>
                 ))}
@@ -90,21 +93,23 @@ export function BlogPage() {
         </div>
       </section>
 
-      <section className="work-section">
-        <div className="work-section-head">
+      <div className="bp-divider" />
+
+      <section className="bp-section">
+        <div className="bp-head">
           <div>
-            <p className="eyebrow">// Priority articles</p>
-            <h2>Publish sequence.</h2>
+            <p className="bp-eyebrow">// Priority articles</p>
+            <h2>Start with these high-intent guides.</h2>
           </div>
         </div>
-        <div className="cards">
+        <div className="bp-grid">
           {Object.entries(articlePages).map(([slug, article]) => (
-            <article className="card" key={slug}>
-              <p className="card-tag">{article.category}</p>
+            <article className="bp-card" key={slug}>
+              <p className="bp-tag">{article.category}</p>
               <p>{article.title}</p>
-              <div className="center-cta">
-                <Link className="cta-btn" to={`/blog/${slug}`}>
-                  Open Article <span aria-hidden="true">-&gt;</span>
+              <div style={{ marginTop: '0.8rem' }}>
+                <Link className="bp-btn bp-btn--ghost" to={`/blog/${slug}`}>
+                  Read Guide <span aria-hidden="true">-&gt;</span>
                 </Link>
               </div>
             </article>
@@ -112,26 +117,30 @@ export function BlogPage() {
         </div>
       </section>
 
-      <section className="contact-wrap">
-        <p className="eyebrow">// Competitor angles to beat</p>
-        <h2>Outperform generic options with system-led positioning.</h2>
-        <div className="mini-cols">
-          {seoBrief.competitorAngles.map((angle) => (
-            <div key={angle}>
-              <p className="tiny-label">Competitor angle</p>
-              <p>{angle}</p>
-            </div>
-          ))}
+      <div className="bp-divider" />
+
+      <section className="bp-section">
+        <div className="bp-head">
+          <div>
+            <p className="bp-eyebrow">// Competitor angles to beat</p>
+            <h2>Outperform generic options with a system-led offer.</h2>
+          </div>
         </div>
-        <div className="mini-cols" style={{ marginTop: '1rem' }}>
-          <div>
-            <p className="tiny-label">Tone and audience</p>
+        <div className="bp-grid">
+          {seoBrief.competitorAngles.map((angle) => (
+            <article className="bp-card" key={angle}>
+              <p className="bp-tag">Competitor angle</p>
+              <p>{angle}</p>
+            </article>
+          ))}
+          <article className="bp-card">
+            <p className="bp-tag">Tone and audience</p>
             <p>{seoBrief.toneNotes.join(' ')}</p>
-          </div>
-          <div>
-            <p className="tiny-label">Core intent questions</p>
+          </article>
+          <article className="bp-card">
+            <p className="bp-tag">Core intent questions</p>
             <p>{seoBrief.coreQuestions.join(' ')}</p>
-          </div>
+          </article>
         </div>
       </section>
     </section>

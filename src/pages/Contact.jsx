@@ -1,27 +1,29 @@
+import './contact-page.css'
+
 export function ContactSection() {
   return (
-    <section className="contact-wrap">
-      <p className="eyebrow">// Communication Protocol</p>
-      <h2>
+    <section className="cp-page">
+      <p className="cp-eyebrow">// Communication Protocol</p>
+      <h2 className="cp-title">
         Start Your
         <br />
-        Next Video Project
+        Next High-Performing Video Campaign
       </h2>
-      <div className="mini-cols contact-quick">
-        <div>
-          <p className="tiny-label">Best for</p>
-          <p>Brands, agencies, creators, and ecommerce teams that need consistent short-form content.</p>
-        </div>
-        <div>
-          <p className="tiny-label">Typical turnaround</p>
-          <p>Most requests are delivered in 48 to 72 hours, based on scope and footage quality.</p>
-        </div>
-        <div>
-          <p className="tiny-label">What to send</p>
-          <p>Your footage links, target platform, style references, and weekly content goals.</p>
-        </div>
+      <div className="cp-grid">
+        <article className="cp-card">
+          <p className="cp-label">Best for</p>
+          <p className="cp-copy">Brands, agencies, creators, and ecommerce teams that need reliable short-form output.</p>
+        </article>
+        <article className="cp-card">
+          <p className="cp-label">Typical turnaround</p>
+          <p className="cp-copy">Most projects ship in 48 to 72 hours, depending on scope and footage quality.</p>
+        </article>
+        <article className="cp-card">
+          <p className="cp-label">What to send</p>
+          <p className="cp-copy">Send footage links, target platforms, style references, and weekly growth goals.</p>
+        </article>
       </div>
-      <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
+      <form className="cp-form" onSubmit={(event) => event.preventDefault()}>
         <label>
           Name
           <input type="text" placeholder="Your name" />
@@ -34,7 +36,7 @@ export function ContactSection() {
           Project Brief
           <textarea rows="4" placeholder="Tell us what you want to create"></textarea>
         </label>
-        <button type="submit">Request Free Strategy Call</button>
+        <button type="submit">Request My Free Strategy Call</button>
       </form>
     </section>
   )

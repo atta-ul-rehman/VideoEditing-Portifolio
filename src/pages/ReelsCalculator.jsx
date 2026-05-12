@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './reels-calculator-page.css'
 
 /* ─── Quiz data ─── */
 const questions = [
@@ -137,13 +138,13 @@ export function ReelsCalculator() {
   }
 
   return (
-    <section className="calc-page">
+    <section className="calc-page rc-page">
       {/* ── SEO heading always in the DOM ── */}
       <div className="calc-page-header">
         <span className="eyebrow">// FREE TOOL</span>
         <h1>How Many Reels Should I Post Per Week?</h1>
         <p className="calc-page-sub">
-          Answer 4 quick questions and get a personalized weekly reels schedule — free.
+          Answer 4 quick questions and get a personalized weekly reels plan in under 60 seconds.
         </p>
       </div>
 
@@ -224,10 +225,10 @@ function IntroCard({ onStart }) {
   return (
     <div className="calc-card calc-intro">
       <p className="calc-tag">FREE REELS CALCULATOR</p>
-      <h2>Get Your Personalized Reels Posting Plan</h2>
+      <h2>Get Your Personalized Reels Growth Plan</h2>
       <p className="calc-intro-body">
         Answer 4 quick questions about your goals and bandwidth. We calculate your exact weekly
-        posting schedule — no email required.
+        posting schedule with no email gate.
       </p>
       <div className="calc-intro-steps">
         {['Your goal', 'Content type', 'Your setup', 'Time available'].map((label, i) => (
@@ -238,7 +239,7 @@ function IntroCard({ onStart }) {
         ))}
       </div>
       <button className="calc-btn" onClick={onStart}>
-        Start Calculator →
+        Build My Plan →
       </button>
     </div>
   )
@@ -269,7 +270,7 @@ function QuestionCard({ question, step, total, selected, onSelect, onNext }) {
         onClick={onNext}
         disabled={!selected}
       >
-        {step === total ? 'Get My Plan →' : 'Next →'}
+        {step === total ? 'Show My Plan →' : 'Next →'}
       </button>
     </div>
   )
@@ -327,14 +328,14 @@ function ResultCard({ plan, answers, onReset, onHire }) {
 
       <div className="calc-cta-block">
         <p className="calc-tag">// THE NEXT STEP</p>
-        <h2>Want Us to Edit All {perMonth} of Those Reels For You?</h2>
+        <h2>Want Us to Edit All {perMonth} Reels for You?</h2>
         <p>
-          At {perWeek} reels per week, editing alone takes 10–20+ hours of your time. ClipForge
-          handles hooks, captions, pacing, and delivery — you just film and post.
+          At {perWeek} reels per week, editing can consume 10 to 20+ hours every month. ClipForge
+          handles hooks, captions, pacing, and delivery so you can focus on content and growth.
         </p>
         <div className="calc-cta-actions">
           <button className="calc-btn" onClick={onHire}>
-            Get a Free Quote →
+            Get My Custom Quote →
           </button>
           <button className="calc-btn-ghost" onClick={onReset}>
             Recalculate

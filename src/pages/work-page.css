@@ -1,0 +1,130 @@
+/* ============================================================
+   Work Page - Premium Layer
+   Scoped with .wp-page to keep it isolated from other pages
+   ============================================================ */
+
+.wp-page {
+  --wp-green: var(--accent);
+  --wp-gold: #d6a846;
+}
+
+.wp-page .work-hero {
+  border: 1px solid rgba(25, 230, 183, 0.16);
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(214, 168, 70, 0.11), transparent 36%),
+    radial-gradient(circle at 8% 84%, rgba(25, 230, 183, 0.08), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.014), #080d13 58%);
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.34);
+}
+
+.wp-page .work-hero .eyebrow {
+  border: 1px solid rgba(214, 168, 70, 0.34);
+  background: rgba(214, 168, 70, 0.18);
+  color: #f2d792;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  width: fit-content !important;
+}
+
+.wp-page .work-hero-title span:last-child {
+  color: var(--wp-green);
+}
+
+.wp-page .work-hero-stat {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(9, 14, 21, 0.7);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+}
+
+.wp-page .work-hero-stat span {
+  color: var(--wp-green);
+}
+
+.wp-page .work-filters {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.95rem;
+}
+
+.wp-page .work-filters .active {
+  border-color: rgba(25, 230, 183, 0.65);
+  background: rgba(25, 230, 183, 0.16);
+  color: var(--wp-green);
+}
+
+.wp-page .featured-case,
+.wp-page .archive-card,
+.wp-page .capability-card,
+.wp-page .intent-card {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.wp-page .work-section,
+.wp-page .work-capabilities,
+.wp-page .work-process {
+  border: 1px solid rgba(25, 230, 183, 0.14);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(8, 13, 19, 0.94));
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.24);
+}
+
+.wp-page .work-section-head {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.8rem;
+}
+
+.wp-page .work-section-head .eyebrow,
+.wp-page .work-process .eyebrow,
+.wp-page .work-capabilities .eyebrow {
+  border: 1px solid rgba(214, 168, 70, 0.3);
+  background: rgba(214, 168, 70, 0.15);
+  color: #f0d48c;
+  border-radius: 999px;
+  padding: 0.32rem 0.72rem;
+  width: fit-content;
+}
+
+.wp-page .intent-card .card-tag,
+.wp-page .capability-card .card-tag {
+  color: var(--wp-green);
+}
+
+.wp-page .cap-num {
+  color: rgba(25, 230, 183, 0.28);
+}
+
+.wp-page .work-process li span {
+  color: rgba(25, 230, 183, 0.45);
+}
+
+.wp-page .work-cta-strip {
+  border: 1px solid rgba(25, 230, 183, 0.26);
+  border-radius: 12px;
+  background: rgba(8, 14, 21, 0.86);
+}
+
+.wp-page .work-cta-strip strong {
+  color: var(--wp-green);
+}
+
+.wp-page .work-cta-strip .cta-btn {
+  border-color: rgba(25, 230, 183, 0.5);
+}
+
+.wp-page .archive-card:hover,
+.wp-page .featured-case:hover,
+.wp-page .capability-card:hover {
+  box-shadow: 0 10px 24px rgba(25, 230, 183, 0.09);
+}
+
+@media (max-width: 700px) {
+  .wp-page .work-hero,
+  .wp-page .work-section,
+  .wp-page .work-capabilities,
+  .wp-page .work-process {
+    border-radius: 12px;
+  }
+}
